@@ -9,40 +9,49 @@
       Title="MainPage">
 
     <Grid>
-        <TabControl Background="DarkGray" TabStripPlacement="Left">
-            <TabItem Padding="10, 4" Header="Главная">
+        <TabControl x:Name="tabber" Background="DarkGray" TabStripPlacement="Left">
+            <TabItem Padding="10, 4" x:Name="mainTab" Header="Главная">
                 <TabItem.Content>
                     <TextBlock Text="ку" />
                 </TabItem.Content>
             </TabItem>
             <TabItem IsEnabled="False" Opacity="0" Height="20"/>
+            
             <TabItem Padding="10, 4" Header="Готовые проекты">
                 <TabItem.Content>
                     <TextBlock Text="ку1" />
                 </TabItem.Content>
             </TabItem>
             <TabItem IsEnabled="False" Opacity="0" Height="20"/>
+            
             <TabItem Visibility="{Binding ForUsersVis}" Padding="10, 4" Header="Пользователям">
                 <TabItem.Content>
                     <TextBlock Text="ку2" />
                 </TabItem.Content>
             </TabItem>
             <TabItem IsEnabled="False" Visibility="{Binding ForUsersVis}"  Opacity="0" Height="20"/>
+            
             <TabItem Padding="10, 4" Visibility="{Binding ForAdminsVis}" Header="Администраторам">
                 <TabItem.Content>
                     <TextBlock Text="ку3" />
                 </TabItem.Content>
             </TabItem>
             <TabItem IsEnabled="False" Visibility="{Binding ForAdminsVis}" Opacity="0" Height="20"/>
+            
             <TabItem Padding="10, 4" Header="Личный кабинет">
-                <TabItem.Content>
-                    <TextBlock Text="ку4" />
-                </TabItem.Content>
+                <TextBlock Text="ку4" />
             </TabItem>
             <TabItem IsEnabled="False" Opacity="0" Height="80"/>
+            
             <TabItem Padding="10, 4" Header="Выход">
                 <TabItem.Content>
-                    <TextBlock Text="ку5" />
+                    <StackPanel Background="WhiteSmoke" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Padding="20" Text="Вы уверены, что хотите выйти?"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Button Click="Sure_Click" Margin="10" Padding="30,0" Content="ДА"/>
+                            <Button Click="NotSure_Click" Margin="10" Padding="30,0" Content="НЕТ"/>
+                        </StackPanel>
+                    </StackPanel>
                 </TabItem.Content>
             </TabItem>
         </TabControl>

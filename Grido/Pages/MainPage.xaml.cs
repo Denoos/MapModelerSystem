@@ -56,7 +56,15 @@ namespace Grido.Pages
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         private void RenderKabinet()
         {
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
+        }
+
+        private void Sure_Click(object sender, RoutedEventArgs e)
+            => mv.CurrentPage = new WelcomePage(mv);
+
+        private void NotSure_Click(object sender, RoutedEventArgs e)
+        {
+            tabber.SelectedItem = mainTab;
         }
     }
 }
