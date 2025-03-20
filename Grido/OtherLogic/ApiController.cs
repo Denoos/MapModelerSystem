@@ -1,6 +1,7 @@
 ﻿using Grido.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -26,6 +27,11 @@ namespace Grido.OtherLogic
         public async Task<User> Authorisation(User user) //отправляет в апи, и возвращает декод от респонса
         {
             return User;
+        }
+
+        public async Task<List<Map>> GetAllMaps()
+        {
+            return [];
         }
     }
 }

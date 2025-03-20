@@ -1,4 +1,5 @@
 ﻿using Grido.Models;
+using Grido.OtherLogic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,17 +27,25 @@ namespace Grido.Pages
     {
         private Visibility forAdminsVis;
         private Visibility forUsersVis;
-
+        private MainWindow mv;
+        private User user;
+        private User User { get => user; set { user = value; Signal(); } }
         public Visibility ForUsersVis { get => forUsersVis; set { forUsersVis = value; Signal(); } }
         public Visibility ForAdminsVis { get => forAdminsVis; set { forAdminsVis = value; Signal(); } }
+        ApiController api = ApiController.Inst;
+
         public MainPage(MainWindow mv, User user)
         {
+            this.mv = mv;
+            this.User = user;
+            RenderKabinet();
             InitializeComponent();
             DataContext = this;
-            
         }
+
         public MainPage(MainWindow mv)
         {
+            this.mv = mv;
             InitializeComponent();
             DataContext = this;
         }
@@ -45,5 +54,9 @@ namespace Grido.Pages
 
         private void Signal([CallerMemberName]string prop = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        private void RenderKabinet()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
