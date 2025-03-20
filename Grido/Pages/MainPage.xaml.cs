@@ -33,6 +33,7 @@ namespace Grido.Pages
         {
             InitializeComponent();
             DataContext = this;
+            
         }
         public MainPage(MainWindow mv)
         {
@@ -44,16 +45,5 @@ namespace Grido.Pages
 
         private void Signal([CallerMemberName]string prop = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        //                      _____
-        //                     |  |  |
-        //                     |__|__|
-        //                     |     |
-        //                     |     |
-        //                     |     |
-        //                     |     | вот так правилно еблан
-        //                _____|     |_____
-        //               |                 |
-        //               |                 |
-        //               |_________________|
     }
 }

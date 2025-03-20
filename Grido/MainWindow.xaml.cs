@@ -1,5 +1,6 @@
 ﻿using Grido.Pages;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,6 +38,6 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         CurrentPage = new WelcomePage(this);
         DataContext = this;
     }
-    private void Signal(string prop = null)
+    private void Signal([CallerMemberName] string prop = null)
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
 }
