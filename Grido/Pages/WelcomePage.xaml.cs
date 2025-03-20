@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Grido.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,18 +21,40 @@ namespace Grido.Pages
     /// <summary>
     /// Логика взаимодействия для WelcomePage.xaml
     /// </summary>
-    public partial class WelcomePage : Page, INotifyPropertyChanged
+    public partial class WelcomePage : Page
     {
+        private User User;
+
         public WelcomePage(MainWindow mv)
         {
             InitializeComponent();
             DataContext = this;
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-        private void Signal(string? prop = null)
-            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-    
-    
+        public void GetUserInfo()
+            => User = new() { Login = loginTextBox.Text, Nickname = nicknameTextBox.Text, Password = passwordTextBox.Text };
+
+        private void Reg_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                GetUserInfo();
+
+            }
+            catch (Exception ex)
+            { 
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Auth_Click(object sender, RoutedEventArgs e)
+        {
+            GetUserInfo();
+        }
+
+        private void NoAuth_Click(object sender, RoutedEventArgs e)
+        {
+            GetUserInfo();
+        }
     }
 }
