@@ -1,4 +1,5 @@
 ﻿using Grido.Models;
+using Grido.OtherLogic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,7 @@ namespace Grido.Pages
     public partial class WelcomePage : Page
     {
         private User User;
+        readonly ApiController api = ApiController.Inst;
 
         public WelcomePage(MainWindow mv)
         {
@@ -39,22 +41,47 @@ namespace Grido.Pages
             try
             {
                 GetUserInfo();
+                if (string.IsNullOrEmpty(User.Login) || string.IsNullOrEmpty(User.Password))
+                    MessageBox.Show("Вы заполнили не все обязательные поля! (логин и пароль являются обязательными)");
+                else
+                {
+                    if (string.IsNullOrEmpty(User.Nickname))
+                        MessageBox.Show("Позднее вы сможете заполнить ник в личном кабинете!");
 
+                }
             }
             catch (Exception ex)
-            { 
+            {
                 MessageBox.Show(ex.Message);
             }
         }
 
         private void Auth_Click(object sender, RoutedEventArgs e)
         {
-            GetUserInfo();
+            try
+            {
+                GetUserInfo();
+                if (string.IsNullOrEmpty(User.Login) || string.IsNullOrEmpty(User.Password))
+                    MessageBox.Show("Вы заполнили не все обязательные поля! (логин и пароль являются обязательными)");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void NoAuth_Click(object sender, RoutedEventArgs e)
         {
-            GetUserInfo();
+            try
+            {
+                GetUserInfo();
+                if (string.IsNullOrEmpty(User.Login) || string.IsNullOrEmpty(User.Password))
+                    MessageBox.Show("Вы пытаетесь войти без регистрации, в таком случае функционал очень сильно ограничен! Позже вы можте войти в личном кабинете, чтобы увеличить доступ к функционалу!", "Уведомление");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

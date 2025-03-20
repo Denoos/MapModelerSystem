@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,14 +12,18 @@ namespace Grido.OtherLogic
     {
         private static ApiController inst;
         public static ApiController Inst { get => inst ?? new(); }
+        HttpClient _client;
 
-        QwertyContext _context;
+        //ApiController()
+        // => _client = new() { BaseAddress = new Uri("") }; //НУЖНО добавить сюда адрес апи и раскоментить
 
-        ApiController()
+        public User Registration()
         {
-            RefreshContext();
+            return new User();
         }
-        private void RefreshContext()
-            => _context = new();
+        public User Authorisation()
+        {
+            return new User();
+        }
     }
 }

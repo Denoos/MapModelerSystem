@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Grido"
         mc:Ignorable="d"
-        Title="Grido" Height="490" Width="840" WindowStartupLocation="CenterScreen" Background="LightGray">
+        Title="Grido" Height="490" Width="840" WindowStartupLocation="CenterScreen" Background="Gray">
     <Grid>
-        <Frame Margin="20" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}"/>
+        <Frame Margin="20" Background="LightGray" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}"/>
     </Grid>
 </Window>
