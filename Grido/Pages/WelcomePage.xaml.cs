@@ -26,9 +26,11 @@ namespace Grido.Pages
     {
         private User User;
         readonly ApiController api = ApiController.Inst;
+        MainWindow mv;
 
         public WelcomePage(MainWindow mv)
         {
+            this.mv = mv;
             InitializeComponent();
             DataContext = this;
         }
@@ -36,7 +38,7 @@ namespace Grido.Pages
         public void GetUserInfo()
             => User = new() { Login = loginTextBox.Text, Nickname = nicknameTextBox.Text, Password = passwordTextBox.Text };
 
-        private void Reg_Click(object sender, RoutedEventArgs e)
+        private async void Reg_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -47,7 +49,7 @@ namespace Grido.Pages
                 {
                     if (string.IsNullOrEmpty(User.Nickname))
                         MessageBox.Show("Позднее вы сможете заполнить ник в личном кабинете!");
-
+                    var answer = await api.Registration(User);
                 }
             }
             catch (Exception ex)
@@ -56,7 +58,7 @@ namespace Grido.Pages
             }
         }
 
-        private void Auth_Click(object sender, RoutedEventArgs e)
+        private async void Auth_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -70,13 +72,20 @@ namespace Grido.Pages
             }
         }
 
-        private void NoAuth_Click(object sender, RoutedEventArgs e)
+        private async void NoAuth_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 GetUserInfo();
-                if (string.IsNullOrEmpty(User.Login) || string.IsNullOrEmpty(User.Password))
-                    MessageBox.Show("Вы пытаетесь войти без регистрации, в таком случае функционал очень сильно ограничен! Позже вы можте войти в личном кабинете, чтобы увеличить доступ к функционалу!", "Уведомление");
+                if (!string.IsNullOrEmpty(User.Login) || !string.IsNullOrEmpty(User.Password))
+                {
+                    var mb = MessageBox.Show("Вы уверены, что хотите войти без регистрации?", "Уведомление", MessageBoxButton.YesNo);
+                    if (mb == MessageBoxResult.No)
+                        return;
+                }
+                MessageBox.Show("Вы пытаетесь войти без регистрации, в таком случае функционал очень сильно ограничен! Позже вы можте войти в личном кабинете, чтобы увеличить доступ к функционалу!", "Уведомление");
+                User = await api.Authorisation(User);
+                mv.CurrentPage = new MainPage(mv, User);
             }
             catch (Exception ex)
             {

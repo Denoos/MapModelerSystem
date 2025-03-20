@@ -17,11 +17,11 @@ namespace Grido.OtherLogic
         //ApiController()
         // => _client = new() { BaseAddress = new Uri("") }; //НУЖНО добавить сюда адрес апи и раскоментить
 
-        public User Registration()
+        public async Task<User> Registration(User user)
         {
             return new User();
         }
-        public User Authorisation()
+        public async Task<User> Authorisation(User user)
         {
             return new User();
         }
