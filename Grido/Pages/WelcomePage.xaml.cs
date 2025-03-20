@@ -112,5 +112,8 @@ namespace Grido.Pages
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void I_Click(object sender, RoutedEventArgs e)
+            => mv.CurrentPage = new MainPage(mv, new User() { Login= "Denoos" , Password = "Denoos", Nickname = "Denoos" });
     }
 }

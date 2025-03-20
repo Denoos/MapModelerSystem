@@ -52,6 +52,7 @@
                 <Button Padding="10, 0" Click="Reg_Click" Content="Зарегестрироваться" Margin="10, 0" Background="Black" Foreground="White" Width="Auto"/>
                 <Button Padding="10, 0" Click="Auth_Click" Content="Авторизоваться" Margin="10, 0" Background="Orange" Width="Auto"/>
                 <Button Padding="10, 0" Click="NoAuth_Click" Content="Войти без регистрации" Margin="10, 0" Background="White" Width="Auto"/>
+                <Button Padding="10, 0" Click="I_Click" Content="TEST_FUNC" Margin="10, 0" Background="White" Width="Auto"/>
             </StackPanel>
 
         </Grid>

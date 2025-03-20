@@ -9,6 +9,42 @@
       Title="MainPage">
 
     <Grid>
-        
+        <TabControl Background="DarkGray" TabStripPlacement="Left">
+            <TabItem Padding="10, 4" Header="Главная">
+                <TabItem.Content>
+                    <TextBlock Text="ку" />
+                </TabItem.Content>
+            </TabItem>
+            <TabItem IsEnabled="False" Opacity="0" Height="20"/>
+            <TabItem Padding="10, 4" Header="Готовые проекты">
+                <TabItem.Content>
+                    <TextBlock Text="ку1" />
+                </TabItem.Content>
+            </TabItem>
+            <TabItem IsEnabled="False" Opacity="0" Height="20"/>
+            <TabItem Padding="10, 4" Header="Пользователям">
+                <TabItem.Content>
+                    <TextBlock Text="ку2" />
+                </TabItem.Content>
+            </TabItem>
+            <TabItem IsEnabled="False" Opacity="0" Height="20"/>
+            <TabItem Padding="10, 4" Header="Администраторам">
+                <TabItem.Content>
+                    <TextBlock Text="ку3" />
+                </TabItem.Content>
+            </TabItem>
+            <TabItem IsEnabled="False" Opacity="0" Height="20"/>
+            <TabItem Padding="10, 4" Header="Личный кабинет">
+                <TabItem.Content>
+                    <TextBlock Text="ку4" />
+                </TabItem.Content>
+            </TabItem>
+            <TabItem IsEnabled="False" Opacity="0" Height="80"/>
+            <TabItem Padding="10, 4" Header="Выход">
+                <TabItem.Content>
+                    <TextBlock Text="ку5" />
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Page>
