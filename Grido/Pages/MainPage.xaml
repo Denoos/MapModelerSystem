@@ -22,18 +22,18 @@
                 </TabItem.Content>
             </TabItem>
             <TabItem IsEnabled="False" Opacity="0" Height="20"/>
-            <TabItem Padding="10, 4" Header="Пользователям">
+            <TabItem Visibility="{Binding ForUsersVis}" Padding="10, 4" Header="Пользователям">
                 <TabItem.Content>
                     <TextBlock Text="ку2" />
                 </TabItem.Content>
             </TabItem>
-            <TabItem IsEnabled="False" Opacity="0" Height="20"/>
-            <TabItem Padding="10, 4" Header="Администраторам">
+            <TabItem IsEnabled="False" Visibility="{Binding ForUsersVis}"  Opacity="0" Height="20"/>
+            <TabItem Padding="10, 4" Visibility="{Binding ForAdminsVis}" Header="Администраторам">
                 <TabItem.Content>
                     <TextBlock Text="ку3" />
                 </TabItem.Content>
             </TabItem>
-            <TabItem IsEnabled="False" Opacity="0" Height="20"/>
+            <TabItem IsEnabled="False" Visibility="{Binding ForAdminsVis}" Opacity="0" Height="20"/>
             <TabItem Padding="10, 4" Header="Личный кабинет">
                 <TabItem.Content>
                     <TextBlock Text="ку4" />
