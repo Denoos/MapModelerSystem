@@ -49,7 +49,17 @@ namespace Grido.Pages
                 {
                     if (string.IsNullOrEmpty(User.Nickname))
                         MessageBox.Show("Позднее вы сможете заполнить ник в личном кабинете!");
-                    var answer = await api.Registration(User);
+                    if (await api.Registration(User))
+                    {
+                        var responce = await api.Authorisation(User);
+                        if (responce.Login == User.Login &&
+                            responce.Password == User.Password)
+                        {
+                            User = responce;
+                            mv.CurrentPage = new MainPage(mv, User);
+                        }
+
+                    }
                 }
             }
             catch (Exception ex)
@@ -64,7 +74,17 @@ namespace Grido.Pages
             {
                 GetUserInfo();
                 if (string.IsNullOrEmpty(User.Login) || string.IsNullOrEmpty(User.Password))
+                {
                     MessageBox.Show("Вы заполнили не все обязательные поля! (логин и пароль являются обязательными)");
+                    return;
+                }
+                var responce = await api.Authorisation(User);
+                if (responce.Login == User.Login &&
+                    responce.Password == User.Password)
+                {
+                    User = responce;
+                    mv.CurrentPage = new MainPage(mv, User);
+                }
             }
             catch (Exception ex)
             {
