@@ -13,7 +13,7 @@
             <TabItem Padding="10, 4" x:Name="mainTab" Header="Главная">
                 <TabItem.Content>
                     <TextBlock Text="ку" />
-                </TabItem.Content>
+                </TabItem.Content> 
             </TabItem>
             <TabItem IsEnabled="False" Opacity="0" Height="20"/>
             
