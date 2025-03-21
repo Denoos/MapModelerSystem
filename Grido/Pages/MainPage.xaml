@@ -12,7 +12,9 @@
         <TabControl x:Name="tabber" Background="DarkGray" TabStripPlacement="Left">
             <TabItem Padding="10, 4" x:Name="mainTab" Header="Главная">
                 <TabItem.Content>
-                    <TextBlock Text="ку" />
+					<Grid>
+						
+					</Grid>
                 </TabItem.Content> 
             </TabItem>
             <TabItem IsEnabled="False" Opacity="0" Height="20"/>
