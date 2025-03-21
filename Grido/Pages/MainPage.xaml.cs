@@ -66,5 +66,25 @@ namespace Grido.Pages
         {
             tabber.SelectedItem = mainTab;
         }
+
+        private void LikeRazrab_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GitHub_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void InfoRazrab_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

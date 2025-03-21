@@ -13,7 +13,26 @@
             <TabItem Padding="10, 4" x:Name="mainTab" Header="Главная">
                 <TabItem.Content>
 					<Grid>
-						
+						<Grid.RowDefinitions>
+							<RowDefinition Height="3*"/>
+							<RowDefinition Height="1*"/>
+							<RowDefinition Height="1*"/>
+						</Grid.RowDefinitions>
+
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="1*"/>
+							<ColumnDefinition Width="1*"/>
+						</Grid.ColumnDefinitions>
+
+						<StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+							
+						</StackPanel>
+
+						<Button MinWidth="180" Padding="10, 10" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Поддержать разработчиков" Click="LikeRazrab_Click"  Grid.Column="0" Grid.Row="1"/>
+						<Button MinWidth="180" Padding="10, 10" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Помощь" Click="Help_Click"  Grid.Column="1" Grid.Row="1"/>
+					
+						<Button MinWidth="180" Padding="10, 10" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Content="GitHub" Click="GitHub_Click"  Grid.Column="0" Grid.Row="2"/>
+						<Button MinWidth="180" Padding="10, 10" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Content="О разработчике" Click="InfoRazrab_Click"  Grid.Column="1" Grid.Row="2"/>
 					</Grid>
                 </TabItem.Content> 
             </TabItem>
