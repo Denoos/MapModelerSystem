@@ -25,8 +25,8 @@
 						</Grid.ColumnDefinitions>
 
 						<StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-							
-						</StackPanel>
+                            <TextBlock x:Name="MainTextblock" TextWrapping="Wrap" MaxWidth="500" TextAlignment="Center" Background="LightGray" Padding="15" Text="Вы попали на главную страницу!" />
+                        </StackPanel> 
 
 						<Button MinWidth="180" Padding="10, 10" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Поддержать разработчиков" Click="LikeRazrab_Click"  Grid.Column="0" Grid.Row="1"/>
 						<Button MinWidth="180" Padding="10, 10" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Помощь" Click="Help_Click"  Grid.Column="1" Grid.Row="1"/>
