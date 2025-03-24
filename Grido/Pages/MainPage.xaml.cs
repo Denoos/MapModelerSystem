@@ -77,5 +77,10 @@ namespace Grido.Pages
 
         private void InfoRazrab_Click(object sender, RoutedEventArgs e)
             => MainTextblock.Text = "Разработчик проекта: Denoos";
+
+        private void Connect_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

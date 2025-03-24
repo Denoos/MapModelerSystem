@@ -12,58 +12,71 @@
         <TabControl x:Name="tabber" Background="DarkGray" TabStripPlacement="Left">
             <TabItem Padding="10, 4" x:Name="mainTab" Header="Главная">
                 <TabItem.Content>
-					<Grid>
-						<Grid.RowDefinitions>
-							<RowDefinition Height="3*"/>
-							<RowDefinition Height="1*"/>
-							<RowDefinition Height="1*"/>
-						</Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
 
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="1*"/>
-							<ColumnDefinition Width="1*"/>
-						</Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
 
-						<StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+                        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
                             <TextBlock x:Name="MainTextblock" TextWrapping="Wrap" MaxWidth="500" TextAlignment="Center" Background="LightGray" Padding="15" Text="Вы попали на главную страницу!" />
-                        </StackPanel> 
+                        </StackPanel>
 
-						<Button MinWidth="180" Padding="10, 10" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Поддержать разработчиков" Click="LikeRazrab_Click"  Grid.Column="0" Grid.Row="1"/>
-						<Button MinWidth="180" Padding="10, 10" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Помощь" Click="Help_Click"  Grid.Column="1" Grid.Row="1"/>
-					
-						<Button MinWidth="180" Padding="10, 10" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Content="GitHub" Click="GitHub_Click"  Grid.Column="0" Grid.Row="2"/>
-						<Button MinWidth="180" Padding="10, 10" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Content="О разработчике" Click="InfoRazrab_Click"  Grid.Column="1" Grid.Row="2"/>
-					</Grid>
-                </TabItem.Content> 
+                        <Button MinWidth="180" Padding="10, 10" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Поддержать разработчиков" Click="LikeRazrab_Click"  Grid.Column="0" Grid.Row="1"/>
+                        <Button MinWidth="180" Padding="10, 10" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Помощь" Click="Help_Click"  Grid.Column="1" Grid.Row="1"/>
+
+                        <Button MinWidth="180" Padding="10, 10" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Content="GitHub" Click="GitHub_Click"  Grid.Column="0" Grid.Row="2"/>
+                        <Button MinWidth="180" Padding="10, 10" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Content="О разработчике" Click="InfoRazrab_Click"  Grid.Column="1" Grid.Row="2"/>
+                    </Grid>
+                </TabItem.Content>
             </TabItem>
             <TabItem IsEnabled="False" Opacity="0" Height="20"/>
-            
+
             <TabItem Padding="10, 4" Header="Готовые проекты">
                 <TabItem.Content>
                     <TextBlock Text="ку1" />
                 </TabItem.Content>
             </TabItem>
             <TabItem IsEnabled="False" Opacity="0" Height="20"/>
-            
-            <TabItem Visibility="{Binding ForUsersVis}" Padding="10, 4" Header="Пользователям">
+
+            <TabItem Visibility="{Binding ForUsersVis}" Padding="10, 4" Header="Мои проекты">
                 <TabItem.Content>
-                    <TextBlock Text="ку2" />
+                    <Grid Margin="20" Background="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
+                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Подключиться" Click="Connect_Click" /> 
+                        </StackPanel>
+                    </Grid>
                 </TabItem.Content>
             </TabItem>
             <TabItem IsEnabled="False" Visibility="{Binding ForUsersVis}"  Opacity="0" Height="20"/>
-            
+
             <TabItem Padding="10, 4" Visibility="{Binding ForAdminsVis}" Header="Администраторам">
                 <TabItem.Content>
                     <TextBlock Text="ку3" />
                 </TabItem.Content>
             </TabItem>
             <TabItem IsEnabled="False" Visibility="{Binding ForAdminsVis}" Opacity="0" Height="20"/>
-            
+
             <TabItem Padding="10, 4" Header="Личный кабинет">
                 <TextBlock Text="ку4" />
             </TabItem>
             <TabItem IsEnabled="False" Opacity="0" Height="80"/>
-            
+
             <TabItem Padding="10, 4" Header="Выход">
                 <TabItem.Content>
                     <StackPanel Background="WhiteSmoke" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
