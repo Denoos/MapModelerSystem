@@ -39,5 +39,10 @@ namespace Grido.OtherLogic
         {
             return Visibility.Visible;
         }
+
+        public async Task<List<User>> GetAllUsers()
+        {
+            return [];
+        }
     }
 }

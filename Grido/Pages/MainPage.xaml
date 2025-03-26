@@ -50,10 +50,10 @@
                             <ListView ItemsSource="{Binding Maps}" SelectedItem="{Binding SelectedMap}">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Width="Auto" Header="Название"/>
-                                        <GridViewColumn Width="Auto" Header="Ширина"/>
-                                        <GridViewColumn Width="Auto" Header="Высота"/>
-                                        <GridViewColumn Width="Auto" Header="Создатель"/>
+                                        <GridViewColumn Width="Auto" Header="Название" DisplayMemberBinding="{Binding Title}"/>
+                                        <GridViewColumn Width="Auto" Header="Ширина" DisplayMemberBinding="{Binding Width}"/>
+                                        <GridViewColumn Width="Auto" Header="Высота" DisplayMemberBinding="{Binding Height}"/>
+                                        <GridViewColumn Width="Auto" Header="Создатель" DisplayMemberBinding="{Binding IdUserNavigation.Nickname}"/>
                                     </GridView>
                                 </ListView.View>
                             </ListView>
@@ -76,7 +76,7 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0">
-                            <ListView ItemsSource="{Binding Maps}" SelectedItem="{Binding SelectedMap}">
+                            <ListView ItemsSource="{Binding User.Maps}" SelectedItem="{Binding SelectedMap}">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Width="Auto" Header="Название"/>
@@ -101,7 +101,32 @@
 
             <TabItem Padding="10, 4" Visibility="{Binding ForAdminsVis}" Header="Администраторам">
                 <TabItem.Content>
-                    <TextBlock Text="ку3" />
+                    <Grid Margin="20" Background="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <ListView ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Id}" Header="№"/>
+                                        <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Login}" Header="Логин"/>
+                                        <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Password}" Header="Пароль"/>
+                                        <GridViewColumn Width="Auto" DisplayMemberBinding="{Binding Nickname}" Header="Ник"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
+                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Добавить" Click="Add_Map_Click" />
+                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Удалить" Click="Edit_Map_Click" />
+                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Изменить" Click="Del_Map_Click" />
+                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Посмотреть" Click="See_Map_Click" />
+                        </StackPanel>
+                    </Grid>
                 </TabItem.Content>
             </TabItem>
             <TabItem IsEnabled="False" Visibility="{Binding ForAdminsVis}" Opacity="0" Height="20"/>

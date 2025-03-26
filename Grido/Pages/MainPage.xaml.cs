@@ -31,9 +31,13 @@ namespace Grido.Pages
         private MainWindow mv;
         private User user;
         private Map map;
+        private User selectedUser;
         private List<Map> maps;
+        private List<User> users;
         public List<Map> Maps { get => maps; set { maps = value; Signal(); } }
+        public List<User> Users { get => users; set { users = value; Signal(); } }
         public Map SelectedMap { get => map; set { map = value; Signal(); } }
+        public User SelectedUser { get => selectedUser; set { selectedUser = value; Signal(); } }
         private User User { get => user; set { user = value; Signal(); } }
         public Visibility ForUsersVis { get => forUsersVis; set { forUsersVis = value; Signal(); } }
         public Visibility ForAdminsVis { get => forAdminsVis; set { forAdminsVis = value; Signal(); } }
@@ -57,10 +61,21 @@ namespace Grido.Pages
             InitializeComponent();
             DataContext = this;
             Maps = await api.GetAllMaps();
+            Users = await api.GetAllUsers();
             SelectedMap = new();
             User = new();
             ForAdminsVis = await api.GetVisibility(User, "admin");
             ForUsersVis = await api.GetVisibility(User, "signed");
+
+            Test();
+        }
+
+        private void Test()
+        {
+            var a = new User() { Id = 0, Login = "123", Password = "123", Nickname = "Me", IdRole = 1, IdRoleNavigation = new Role() { Id = 1, Title = "негр" } };
+            Users.Add(a);
+
+            Maps.Add(new Map() { Id = 1, IdUser = a.Id, IdUserNavigation = a, Height = 10, Width = 10, Title = "ZALUPA", Structure = [] });
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
