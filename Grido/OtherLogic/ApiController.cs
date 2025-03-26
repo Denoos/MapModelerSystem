@@ -44,5 +44,14 @@ namespace Grido.OtherLogic
         {
             return [];
         }
+        public async Task<List<Role>> GetAllRoles()
+        {
+            return [];
+        }
+
+        public async Task<bool> AddUser()
+        {
+            return true;
+        }
     }
 }

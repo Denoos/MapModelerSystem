@@ -1,4 +1,5 @@
 ﻿using Grido.Models;
+using Grido.OtherLogic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +27,13 @@ namespace Grido.Pages
         private MainWindow mv;
         private User user;
         private bool IsAdd;
+        private List<Role> roles;
+        private Role selectedRole;
+
+        private List<Role> Roles { get => roles; set { roles = value; Signal(); } }
+        private Role SelectedRole { get => selectedRole; set { selectedRole = value; Signal(); } }
+
+        private ApiController api = ApiController.Inst;
 
         public User User { get => user; set { user = value; Signal(); } }
         public FormUserPage(MainWindow mv)
@@ -47,19 +55,21 @@ namespace Grido.Pages
             IsAdd = false;
         }
 
-        private void BaseStart(MainWindow mv)
+        private async void BaseStart(MainWindow mv)
         {
             InitializeComponent();
             DataContext = this;
             this.mv = mv;
+            Roles = await api.GetAllRoles();
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
             => mv.CurrentPage = new MainPage(mv, mv.LoggedUser);
 
-        private void Save_Click(object sender, RoutedEventArgs e)
-        { 
-        
+        private async void Save_Click(object sender, RoutedEventArgs e)
+        {
+            await api.AddUser();
+            Cancel_Click(sender, e);
         }
     }
 }

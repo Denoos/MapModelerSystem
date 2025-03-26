@@ -128,5 +128,27 @@ namespace Grido.Pages
         {
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Add_User_Click(object sender, RoutedEventArgs e)
+            => mv.CurrentPage = new FormUserPage(mv);
+        
+
+        private void Edit_User_Click(object sender, RoutedEventArgs e)
+            => mv.CurrentPage = new FormUserPage(mv, SelectedUser);
+
+        private void Del_User_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void See_User_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
