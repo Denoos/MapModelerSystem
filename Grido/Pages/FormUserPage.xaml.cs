@@ -37,7 +37,7 @@ namespace Grido.Pages
         private bool isen;
         public bool IsEnabled { get => isen; set { isen = value; Signal(); } }
         public User User { get => user; set { user = value; Signal(); } }
-        public FormUserPage(MainWindow mv)
+        public FormUserPage(MainWindow mv, bool isen)
         {
             BaseStart(mv, isen);
             this.User = new();

@@ -53,5 +53,20 @@ namespace Grido.OtherLogic
         {
             return true;
         }
+
+        public async Task<bool> DeleteMap(Map selectedMap)
+        {
+            return true;
+        }
+
+        internal async Task ConnectToGame(Map selectedMap, User loggedUser)
+        {
+
+        }
+
+        public async Task<bool> DeleteUser(User selectedUser)
+        {
+            return true;
+        }
     }
 }

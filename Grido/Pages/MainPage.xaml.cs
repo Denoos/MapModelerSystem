@@ -64,18 +64,7 @@ namespace Grido.Pages
             mv.LoggedUser = new();
             ForAdminsVis = await api.GetVisibility(mv.LoggedUser, "admin");
             ForUsersVis = await api.GetVisibility(mv.LoggedUser, "signed");
-
-            //Test();
         }
-
-        //НЕ НЕСЕТ НА СЕБЕ ФУНКЦИЙ
-        /*private void Test()
-        {
-            var a = new User() { Id = 0, Login = "123", Password = "123", Nickname = "Me", IdRole = 1, IdRoleNavigation = new Role() { Id = 1, Title = "негр" } };
-            Users.Add(a);
-
-            Maps.Add(new Map() { Id = 1, IdUser = a.Id, IdUserNavigation = a, Height = 10, Width = 10, Title = "ZALUPA", Structure = [] });
-        }*/
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -104,47 +93,29 @@ namespace Grido.Pages
         private void InfoRazrab_Click(object sender, RoutedEventArgs e)
             => MainTextblock.Text = "Разработчик проекта: Denoos";
 
-        private void Connect_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        private async void Connect_Click(object sender, RoutedEventArgs e)
+            => await api.ConnectToGame(SelectedMap, mv.LoggedUser);
 
         private void Add_Map_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+            => mv.CurrentPage = new FormMapPage(mv, true);
 
         private void Edit_Map_Click(object sender, RoutedEventArgs e)
-        {
+            => mv.CurrentPage = new FormMapPage(mv, SelectedMap, true);
 
-        }
-
-        private void Del_Map_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        private async void Del_Map_Click(object sender, RoutedEventArgs e)
+            => await api.DeleteMap(SelectedMap);
 
         private void See_Map_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+            => mv.CurrentPage = new FormMapPage(mv, SelectedMap, false);
 
         private void Add_User_Click(object sender, RoutedEventArgs e)
-            => mv.CurrentPage = new FormUserPage(mv);
-        
+            => mv.CurrentPage = new FormUserPage(mv, false);
 
         private void Edit_User_Click(object sender, RoutedEventArgs e)
-            => mv.CurrentPage = new FormUserPage(mv, SelectedUser);
+            => mv.CurrentPage = new FormUserPage(mv, SelectedUser, true);
 
-        private void Del_User_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        private async void Del_User_Click(object sender, RoutedEventArgs e)
+            => await api.DeleteUser(SelectedUser);
 
         private void See_User_Click(object sender, RoutedEventArgs e)
         {
