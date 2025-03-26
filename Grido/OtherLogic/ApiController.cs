@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Grido.OtherLogic
 {
@@ -32,6 +33,11 @@ namespace Grido.OtherLogic
         public async Task<List<Map>> GetAllMaps()
         {
             return [];
+        }
+
+        public async Task<Visibility> GetVisibility(User user, string role = "unsigned")
+        {
+            return Visibility.Visible;
         }
     }
 }

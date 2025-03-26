@@ -30,25 +30,37 @@ namespace Grido.Pages
         private Visibility forUsersVis;
         private MainWindow mv;
         private User user;
+        private Map map;
+        private List<Map> maps;
+        public List<Map> Maps { get => maps; set { maps = value; Signal(); } }
+        public Map SelectedMap { get => map; set { map = value; Signal(); } }
         private User User { get => user; set { user = value; Signal(); } }
         public Visibility ForUsersVis { get => forUsersVis; set { forUsersVis = value; Signal(); } }
         public Visibility ForAdminsVis { get => forAdminsVis; set { forAdminsVis = value; Signal(); } }
-        ApiController api = ApiController.Inst; //пока что не используется, но это нужно.
+        ApiController api = ApiController.Inst;
 
         public MainPage(MainWindow mv, User user)
         {
-            this.mv = mv;
             this.User = user;
             RenderKabinet();
-            InitializeComponent();
-            DataContext = this;
+            BaseStart(mv);
         }
 
         public MainPage(MainWindow mv)
         {
+            BaseStart(mv);
+        }
+
+        private async void BaseStart(MainWindow mv)
+        {
             this.mv = mv;
             InitializeComponent();
             DataContext = this;
+            Maps = await api.GetAllMaps();
+            SelectedMap = new();
+            User = new();
+            ForAdminsVis = await api.GetVisibility(User, "admin");
+            ForUsersVis = await api.GetVisibility(User, "signed");
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -79,6 +91,26 @@ namespace Grido.Pages
             => MainTextblock.Text = "Разработчик проекта: Denoos";
 
         private void Connect_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Add_Map_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Edit_Map_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Del_Map_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void See_Map_Click(object sender, RoutedEventArgs e)
         {
 
         }

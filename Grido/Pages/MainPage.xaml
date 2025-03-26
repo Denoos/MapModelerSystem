@@ -40,7 +40,29 @@
 
             <TabItem Padding="10, 4" Header="Готовые проекты">
                 <TabItem.Content>
-                    <TextBlock Text="ку1" />
+                    <Grid Margin="20" Background="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <ListView ItemsSource="{Binding Maps}" SelectedItem="{Binding SelectedMap}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Width="Auto" Header="Название"/>
+                                        <GridViewColumn Width="Auto" Header="Ширина"/>
+                                        <GridViewColumn Width="Auto" Header="Высота"/>
+                                        <GridViewColumn Width="Auto" Header="Создатель"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
+                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Подключиться" Click="Connect_Click" />
+                        </StackPanel>
+                    </Grid>
                 </TabItem.Content>
             </TabItem>
             <TabItem IsEnabled="False" Opacity="0" Height="20"/>
@@ -54,11 +76,23 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0">
-
+                            <ListView ItemsSource="{Binding Maps}" SelectedItem="{Binding SelectedMap}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Width="Auto" Header="Название"/>
+                                        <GridViewColumn Width="Auto" Header="Ширина"/>
+                                        <GridViewColumn Width="Auto" Header="Высота"/>
+                                        <GridViewColumn Width="Auto" Header="Создатель"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
                         </StackPanel>
 
                         <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
-                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Подключиться" Click="Connect_Click" /> 
+                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Добавить" Click="Add_Map_Click" />
+                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Удалить" Click="Edit_Map_Click" />
+                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Изменить" Click="Del_Map_Click" />
+                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Посмотреть" Click="See_Map_Click" />
                         </StackPanel>
                     </Grid>
                 </TabItem.Content>
@@ -73,7 +107,7 @@
             <TabItem IsEnabled="False" Visibility="{Binding ForAdminsVis}" Opacity="0" Height="20"/>
 
             <TabItem Padding="10, 4" Header="Личный кабинет">
-                <TextBlock Text="ку4" />
+                <!-- Потом тут будет много интересного, типо личный кабинет -->
             </TabItem>
             <TabItem IsEnabled="False" Opacity="0" Height="80"/>
 
