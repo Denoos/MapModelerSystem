@@ -20,28 +20,30 @@ using System.Windows.Shapes;
 namespace Grido.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для FormUserPage.xaml
+    /// Логика взаимодействия для FormMapPage.xaml
     /// </summary>
-    public partial class FormUserPage : Page
+    public partial class FormMapPage : Page
     {
         private MainWindow mv;
-        private User user;
         private bool IsAdd;
-        private List<Role> roles;
-        private Role selectedRole;
-                        
-        private List<Role> Roles { get => roles; set { roles = value; Signal(); } }
-        private Role SelectedRole { get => selectedRole; set { selectedRole = value; Signal(); } }
-
         private ApiController api = ApiController.Inst;
+        private Map map;
         private bool isen;
         public bool IsEnabled { get => isen; set { isen = value; Signal(); } }
-        public User User { get => user; set { user = value; Signal(); } }
-        public FormUserPage(MainWindow mv)
+        private Map Map { get => map; set { map = value; Signal(); } }
+
+        public FormMapPage(MainWindow mv, bool isen)
         {
             BaseStart(mv, isen);
-            this.User = new();
             IsAdd = true;
+            this.Map = new();
+        }
+
+        public FormMapPage(MainWindow mv, Map map, bool isen)
+        {
+            BaseStart(mv, isen);
+            IsAdd = false;
+            this.Map = map;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -49,19 +51,11 @@ namespace Grido.Pages
         private void Signal([CallerMemberName] string prop = null)
            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
 
-        public FormUserPage(MainWindow mv, User user, bool isen)
-        {
-            BaseStart(mv, isen);
-            this.User = user;
-            IsAdd = false;
-        }
-
         private async void BaseStart(MainWindow mv, bool isen)
         {
             InitializeComponent();
             DataContext = this;
             this.mv = mv;
-            Roles = await api.GetAllRoles();
             this.IsEnabled = isen;
         }
 
