@@ -29,7 +29,6 @@ namespace Grido.Pages
         private Visibility forAdminsVis;
         private Visibility forUsersVis;
         private MainWindow mv;
-        private User user;
         private Map map;
         private User selectedUser;
         private List<Map> maps;
@@ -38,14 +37,13 @@ namespace Grido.Pages
         public List<User> Users { get => users; set { users = value; Signal(); } }
         public Map SelectedMap { get => map; set { map = value; Signal(); } }
         public User SelectedUser { get => selectedUser; set { selectedUser = value; Signal(); } }
-        public User User { get => user; set { user = value; Signal(); } }
         public Visibility ForUsersVis { get => forUsersVis; set { forUsersVis = value; Signal(); } }
         public Visibility ForAdminsVis { get => forAdminsVis; set { forAdminsVis = value; Signal(); } }
         ApiController api = ApiController.Inst;
 
         public MainPage(MainWindow mv, User user)
         {
-            this.User = user;
+            mv.LoggedUser = user;
             RenderKabinet();
             BaseStart(mv);
         }
@@ -63,9 +61,9 @@ namespace Grido.Pages
             Maps = await api.GetAllMaps();
             Users = await api.GetAllUsers();
             SelectedMap = new();
-            User = new();
-            ForAdminsVis = await api.GetVisibility(User, "admin");
-            ForUsersVis = await api.GetVisibility(User, "signed");
+            mv.LoggedUser = new();
+            ForAdminsVis = await api.GetVisibility(mv.LoggedUser, "admin");
+            ForUsersVis = await api.GetVisibility(mv.LoggedUser, "signed");
 
             //Test();
         }

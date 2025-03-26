@@ -1,4 +1,5 @@
-﻿using Grido.Pages;
+﻿using Grido.Models;
+using Grido.Pages;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -19,6 +20,8 @@ namespace Grido;
 /// </summary>
 public partial class MainWindow : Window, INotifyPropertyChanged
 {
+    private User loggedUser;
+    public User LoggedUser { get => loggedUser; set { loggedUser = value; Signal(); } }
     private Page currentPage;
     public event PropertyChangedEventHandler? PropertyChanged;
 
