@@ -22,6 +22,7 @@ namespace Grido.Pages
     /// <summary>
     /// Логика взаимодействия для FormUserPage.xaml
     /// </summary>
+    /// 
     public partial class FormUserPage : Page
     {
         private MainWindow mv;

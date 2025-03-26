@@ -44,3 +44,18 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     private void Signal([CallerMemberName] string prop = null)
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
 }
+
+
+
+//https://www.youtube.com/watch?v=1NgKeajCd_Y&ab_channel=%D0%9A%D0%BB%D1%83%D0%B1%D0%92%D0%B8%D0%BD%D0%BA%D1%81%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9
+//https://www.youtube.com/watch?v=1NgKeajCd_Y&ab_channel=%D0%9A%D0%BB%D1%83%D0%B1%D0%92%D0%B8%D0%BD%D0%BA%D1%81%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9
+//https://www.youtube.com/watch?v=1NgKeajCd_Y&ab_channel=%D0%9A%D0%BB%D1%83%D0%B1%D0%92%D0%B8%D0%BD%D0%BA%D1%81%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9
+//https://www.youtube.com/watch?v=1NgKeajCd_Y&ab_channel=%D0%9A%D0%BB%D1%83%D0%B1%D0%92%D0%B8%D0%BD%D0%BA%D1%81%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9
+//https://www.youtube.com/watch?v=1NgKeajCd_Y&ab_channel=%D0%9A%D0%BB%D1%83%D0%B1%D0%92%D0%B8%D0%BD%D0%BA%D1%81%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9
+//https://www.youtube.com/watch?v=1NgKeajCd_Y&ab_channel=%D0%9A%D0%BB%D1%83%D0%B1%D0%92%D0%B8%D0%BD%D0%BA%D1%81%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9
+//https://www.youtube.com/watch?v=1NgKeajCd_Y&ab_channel=%D0%9A%D0%BB%D1%83%D0%B1%D0%92%D0%B8%D0%BD%D0%BA%D1%81%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9
+//https://www.youtube.com/watch?v=1NgKeajCd_Y&ab_channel=%D0%9A%D0%BB%D1%83%D0%B1%D0%92%D0%B8%D0%BD%D0%BA%D1%81%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9
+//https://www.youtube.com/watch?v=1NgKeajCd_Y&ab_channel=%D0%9A%D0%BB%D1%83%D0%B1%D0%92%D0%B8%D0%BD%D0%BA%D1%81%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9
+//https://www.youtube.com/watch?v=1NgKeajCd_Y&ab_channel=%D0%9A%D0%BB%D1%83%D0%B1%D0%92%D0%B8%D0%BD%D0%BA%D1%81%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9
+
+
