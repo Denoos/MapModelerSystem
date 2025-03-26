@@ -90,8 +90,8 @@
 
                         <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
                             <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Добавить" Click="Add_Map_Click" />
-                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Удалить" Click="Edit_Map_Click" />
-                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Изменить" Click="Del_Map_Click" />
+                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Удалить" Click="Del_Map_Click" />
+                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Изменить" Click="Edit_Map_Click" />
                             <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Посмотреть" Click="See_Map_Click" />
                         </StackPanel>
                     </Grid>
@@ -122,8 +122,8 @@
 
                         <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
                             <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Добавить" Click="Add_User_Click" />
-                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Удалить" Click="Edit_User_Click" />
-                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Изменить" Click="Del_User_Click" />
+                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Удалить" Click="Del_User_Click" />
+                            <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Изменить" Click="Edit_User_Click" />
                             <Button Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="15, 2" Margin="0, 40" Content="Посмотреть" Click="See_User_Click" />
                         </StackPanel>
                     </Grid>
