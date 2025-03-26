@@ -118,8 +118,6 @@ namespace Grido.Pages
             => await api.DeleteUser(SelectedUser);
 
         private void See_User_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+            => mv.CurrentPage = new FormUserPage(mv, SelectedUser, false);
     }
 }
