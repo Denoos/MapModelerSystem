@@ -76,7 +76,7 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0">
-                            <ListView ItemsSource="{Binding User.Maps}" SelectedItem="{Binding SelectedMap}">
+                            <ListView ItemsSource="{Binding PersonalInfo.Maps}" SelectedItem="{Binding SelectedMap}">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Width="Auto" Header="Название"/>
