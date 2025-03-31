@@ -148,12 +148,12 @@
                             </StackPanel>
                             
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Логин:" Margin="10,0"/>
+                                <TextBlock Text="Пароль:" Margin="10,0"/>
                                 <TextBlock Text="{Binding PersonalInfo.Password}" />
                             </StackPanel>
                             
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Логин:" Margin="10,0"/>
+                                <TextBlock Text="Ник:" Margin="10,0"/>
                                 <TextBlock Text="{Binding PersonalInfo.Nickname}" />
                             </StackPanel>
 

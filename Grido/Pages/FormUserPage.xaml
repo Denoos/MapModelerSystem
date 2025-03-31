@@ -9,12 +9,24 @@
       Title="FormUserPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical" Grid.Column="0" Margin="4">
+            <Button Content="Назад"/>
+            <Button Content="Сохранить"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Column="1" Margin="40">
+            <StackPanel>
+                <TextBlock Text="Login" />
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>
 <!--
-    
-    {
     public int Id { get; set; }
 
     public int IdRole { get; set; }
@@ -26,8 +38,5 @@
     public string Password { get; set; } = null!;
 
     public virtual Role IdRoleNavigation { get; set; } = null!;
-
-    public virtual ICollection<Map>Maps { get; set; } = new List
-    <Map>();
 }
 -->
