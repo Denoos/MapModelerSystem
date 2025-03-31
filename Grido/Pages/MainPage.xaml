@@ -132,7 +132,6 @@
             <TabItem IsEnabled="False" Visibility="{Binding ForAdminsVis}" Opacity="0" Height="20"/>
 
             <TabItem Padding="10, 4" Header="Личный кабинет">
-                <!-- Потом тут будет много интересного, типо личный кабинет -->
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="4*" />
@@ -145,17 +144,17 @@
                         <StackPanel Margin="30" Orientation="Vertical">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Логин:" Margin="10,0"/>
-                                <TextBlock />
+                                <TextBlock Text="{Binding PersonalInfo.Login}" />
                             </StackPanel>
                             
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Логин:" Margin="10,0"/>
-                                <TextBlock />
+                                <TextBlock Text="{Binding PersonalInfo.Password}" />
                             </StackPanel>
                             
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Логин:" Margin="10,0"/>
-                                <TextBlock />
+                                <TextBlock Text="{Binding PersonalInfo.Nickname}" />
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>

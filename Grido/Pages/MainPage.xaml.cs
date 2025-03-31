@@ -34,10 +34,12 @@ namespace Grido.Pages
         private User selectedUser;
         private List<Map> maps;
         private List<User> users;
+        private User personalInfo;
         public List<Map> Maps { get => maps; set { maps = value; Signal(); } }
         public List<User> Users { get => users; set { users = value; Signal(); } }
         public Map SelectedMap { get => map; set { map = value; Signal(); } }
         public User SelectedUser { get => selectedUser; set { selectedUser = value; Signal(); } }
+        public User PersonalInfo { get => personalInfo; set { personalInfo = value; Signal(); } }
         public Visibility ForUsersVis { get => forUsersVis; set { forUsersVis = value; Signal(); } }
         public Visibility EnterVis { get => enterVis; set { enterVis = value; Signal(); } }
         public Visibility ForAdminsVis { get => forAdminsVis; set { forAdminsVis = value; Signal(); } }
@@ -46,12 +48,13 @@ namespace Grido.Pages
         public MainPage(MainWindow mv, User user)
         {
             mv.LoggedUser = user;
-            RenderKabinet();
             BaseStart(mv);
+            RenderKabinet();
         }
 
         public MainPage(MainWindow mv)
         {
+            mv.LoggedUser = new();
             BaseStart(mv);
         }
 
@@ -59,13 +62,16 @@ namespace Grido.Pages
         {
 
             //сделать ограничение доступа путем возврата нового списка пользователей и списка ролей только администраторам
+            //сделать ограничение доступа путем возврата нового списка пользователей и списка ролей только администраторам
+            //сделать ограничение доступа путем возврата нового списка пользователей и списка ролей только администраторам
+
             this.mv = mv;
             InitializeComponent();
             DataContext = this;
             Maps = await api.GetAllMaps();
             Users = await api.GetAllUsers();
+            PersonalInfo = mv.LoggedUser;
             SelectedMap = new();
-            mv.LoggedUser = new();
             ForAdminsVis = await api.GetVisibility(mv.LoggedUser, "admin");
             ForUsersVis = await api.GetVisibility(mv.LoggedUser, "signed");
             if (ForUsersVis == Visibility.Collapsed)
