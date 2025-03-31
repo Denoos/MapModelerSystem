@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Net.WebRequestMethods;
 
 namespace Grido.Pages
@@ -35,15 +36,19 @@ namespace Grido.Pages
         private List<Map> maps;
         private List<User> users;
         private User personalInfo;
+        private string photoPath;
         public List<Map> Maps { get => maps; set { maps = value; Signal(); } }
         public List<User> Users { get => users; set { users = value; Signal(); } }
         public Map SelectedMap { get => map; set { map = value; Signal(); } }
         public User SelectedUser { get => selectedUser; set { selectedUser = value; Signal(); } }
         public User PersonalInfo { get => personalInfo; set { personalInfo = value; Signal(); } }
+        public string PhotoPath { get => photoPath; set { photoPath = value; Signal(); } }
         public Visibility ForUsersVis { get => forUsersVis; set { forUsersVis = value; Signal(); } }
         public Visibility EnterVis { get => enterVis; set { enterVis = value; Signal(); } }
         public Visibility ForAdminsVis { get => forAdminsVis; set { forAdminsVis = value; Signal(); } }
-        ApiController api = ApiController.Inst;
+
+        private readonly ApiController api = ApiController.Inst;
+        private readonly PhotoController _photo = new();
 
         public MainPage(MainWindow mv, User user)
         {
@@ -80,6 +85,7 @@ namespace Grido.Pages
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         private async void RenderKabinet()
         {
+            PhotoPath = _photo.GetCurrentPath();
         }
 
         private void Sure_Click(object sender, RoutedEventArgs e)
@@ -126,5 +132,30 @@ namespace Grido.Pages
 
         private void See_User_Click(object sender, RoutedEventArgs e)
             => mv.CurrentPage = new FormUserPage(mv, SelectedUser, false);
+        
+        private void Enter_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SelectPhoto_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ChangePhotoPath_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ChangeUserInfo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

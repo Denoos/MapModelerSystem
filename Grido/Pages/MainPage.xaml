@@ -139,7 +139,7 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel MinHeight="250" MinWidth="600" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="40, 10" Orientation="Horizontal" Background="LightGray">
-                        <Image VerticalAlignment="Center" Source="C:\Users\Admin\Pictures\images.jpg" MaxWidth="250" MinWidth="150"/>
+                        <Image VerticalAlignment="Center" Source="{Binding PhotoPath}" MaxWidth="250" MinWidth="150"/>
 
                         <StackPanel Margin="30" Orientation="Vertical" VerticalAlignment="Center">
                             <StackPanel Orientation="Horizontal">
@@ -157,14 +157,15 @@
                                 <TextBlock Text="{Binding PersonalInfo.Nickname}" />
                             </StackPanel>
 
-                            <Button Content="Выбрать изображение" Width="Auto" Height="Auto" Padding="20, 3" Margin="40, 10"/>
+                            <Button Click="SelectPhoto_Click" Content="Выбрать изображение" Width="Auto" Height="Auto" Padding="20, 3" Margin="40, 10"/>
+                            <Button Click="ChangePhotoPath_Click" Content="Поменять путь фото" Width="Auto" Height="Auto" Padding="20, 3" Margin="40, 10"/>
                         </StackPanel>
                     </StackPanel>
 
                     <StackPanel Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30, 0" Orientation="Horizontal">
-                        <Button Visibility="{Binding ForUsersVis}" Content="Сменить пароль" Padding="30,8" Margin="10,0"/>
-                        <Button Visibility="{Binding EnterVis}" Content="Войти" Padding="30,8" Margin="10,0"/>
-                        <Button Visibility="{Binding ForUsersVis}" Content="Выйти" Padding="30,8" Margin="10,0"/>
+                        <Button Click="ChangeUserInfo_Click" Visibility="{Binding ForUsersVis}" Content="Сменить данные" Padding="30,8" Margin="10,0"/>
+                        <Button Click="Enter_Click" Visibility="{Binding EnterVis}" Content="Войти" Padding="30,8" Margin="10,0"/>
+                        <Button Click="Exit_Click" Visibility="{Binding ForUsersVis}" Content="Выйти" Padding="30,8" Margin="10,0"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
