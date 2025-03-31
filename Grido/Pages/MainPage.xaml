@@ -156,6 +156,8 @@
                                 <TextBlock Text="Логин:" Margin="10,0"/>
                                 <TextBlock Text="{Binding PersonalInfo.Nickname}" />
                             </StackPanel>
+
+                            <Button Content="Выбрать изображение" Width="Auto" Height="Auto" Padding="20, 3" Margin="40, 10"/>
                         </StackPanel>
                     </StackPanel>
 
