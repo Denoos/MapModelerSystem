@@ -28,6 +28,7 @@ namespace Grido.Pages
     {
         private Visibility forAdminsVis;
         private Visibility forUsersVis;
+        private Visibility enterVis;
         private MainWindow mv;
         private Map map;
         private User selectedUser;
@@ -38,6 +39,7 @@ namespace Grido.Pages
         public Map SelectedMap { get => map; set { map = value; Signal(); } }
         public User SelectedUser { get => selectedUser; set { selectedUser = value; Signal(); } }
         public Visibility ForUsersVis { get => forUsersVis; set { forUsersVis = value; Signal(); } }
+        public Visibility EnterVis { get => enterVis; set { enterVis = value; Signal(); } }
         public Visibility ForAdminsVis { get => forAdminsVis; set { forAdminsVis = value; Signal(); } }
         ApiController api = ApiController.Inst;
 
@@ -55,6 +57,8 @@ namespace Grido.Pages
 
         private async void BaseStart(MainWindow mv)
         {
+
+            //сделать ограничение доступа путем возврата нового списка пользователей и списка ролей только администраторам
             this.mv = mv;
             InitializeComponent();
             DataContext = this;
@@ -64,15 +68,17 @@ namespace Grido.Pages
             mv.LoggedUser = new();
             ForAdminsVis = await api.GetVisibility(mv.LoggedUser, "admin");
             ForUsersVis = await api.GetVisibility(mv.LoggedUser, "signed");
+            if (ForUsersVis == Visibility.Collapsed)
+                EnterVis = Visibility.Visible;
+            else EnterVis = Visibility.Collapsed;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private void Signal([CallerMemberName]string prop = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        private void RenderKabinet()
+        private async void RenderKabinet()
         {
-           // throw new NotImplementedException();
         }
 
         private void Sure_Click(object sender, RoutedEventArgs e)

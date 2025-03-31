@@ -133,6 +133,39 @@
 
             <TabItem Padding="10, 4" Header="Личный кабинет">
                 <!-- Потом тут будет много интересного, типо личный кабинет -->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel MinHeight="250" MinWidth="600" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="40, 10" Orientation="Horizontal" Background="LightGray">
+                        <Image Source="C:\Users\Admin\Pictures\images.jpg" MaxWidth="250" MinWidth="150"/>
+
+                        <StackPanel Margin="30" Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Логин:" Margin="10,0"/>
+                                <TextBlock />
+                            </StackPanel>
+                            
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Логин:" Margin="10,0"/>
+                                <TextBlock />
+                            </StackPanel>
+                            
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Логин:" Margin="10,0"/>
+                                <TextBlock />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30, 0" Orientation="Horizontal">
+                        <Button Visibility="{Binding ForUsersVis}" Content="Сменить пароль" Padding="30,8" Margin="10,0"/>
+                        <Button Visibility="{Binding EnterVis}" Content="Войти" Padding="30,8" Margin="10,0"/>
+                        <Button Visibility="{Binding ForUsersVis}" Content="Выйти" Padding="30,8" Margin="10,0"/>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem IsEnabled="False" Opacity="0" Height="80"/>
 
