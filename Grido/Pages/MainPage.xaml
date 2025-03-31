@@ -139,9 +139,9 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel MinHeight="250" MinWidth="600" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="40, 10" Orientation="Horizontal" Background="LightGray">
-                        <Image Source="C:\Users\Admin\Pictures\images.jpg" MaxWidth="250" MinWidth="150"/>
+                        <Image VerticalAlignment="Center" Source="C:\Users\Admin\Pictures\images.jpg" MaxWidth="250" MinWidth="150"/>
 
-                        <StackPanel Margin="30" Orientation="Vertical">
+                        <StackPanel Margin="30" Orientation="Vertical" VerticalAlignment="Center">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Логин:" Margin="10,0"/>
                                 <TextBlock Text="{Binding PersonalInfo.Login}" />
