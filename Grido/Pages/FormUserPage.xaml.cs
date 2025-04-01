@@ -28,20 +28,22 @@ namespace Grido.Pages
         private MainWindow mv;
         private User user;
         private Role selectedRole;
-        private List<Role> roles;
+        private List<string> roles;
         private bool IsAdd;
         private bool isen;
         private string newPassword;
         private string confirmPassword;
         private Visibility forAdminsVis;
+        private Visibility comboVis;
 
         public User User { get => user; set { user = value; Signal(); } }
-        private Role SelectedRole { get => selectedRole; set { selectedRole = value; Signal(); } }
-        private List<Role> Roles { get => roles; set { roles = value; Signal(); } }
+        public Role SelectedRole { get => selectedRole; set { selectedRole = value; Signal(); } }
+        public List<string> Roles { get => roles; set { roles = value; Signal(); } }
         public bool IsEnabled { get => isen; set { isen = value; Signal(); } }
         public string NewPassword { get => newPassword; set { newPassword = value; Signal(); } }
         public string ConfirmPassword { get => confirmPassword; set { confirmPassword = value; Signal(); } }
         public Visibility ForAdminsVis { get => forAdminsVis; set { forAdminsVis = value; Signal(); } }
+        public Visibility ComboVis { get => comboVis; set { comboVis = value; Signal(); } }
 
         private ApiController api = ApiController.Inst;
 
@@ -72,6 +74,7 @@ namespace Grido.Pages
             if (await api.GetVisibility(mv.LoggedUser, "admin") == Visibility.Visible)
                 ForAdminsVis = Visibility.Collapsed;
             else ForAdminsVis = Visibility.Visible;
+            ComboVis = await api.GetVisibility(mv.LoggedUser, "admin");
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -80,19 +83,26 @@ namespace Grido.Pages
         private async void Save_Click(object sender, RoutedEventArgs e)
         {
             if (CheckForValidPsswords())
-                await api.AddUser();
+            {
+                User.Password = NewPassword;
+                User.IdRoleNavigation = await api.GetRoleOne(SelectedRole);
+                User.IdRole = User.IdRoleNavigation.Id;
+                if (IsAdd)
+                    await api.AddUser(User);
+                else await api.EditUser(User);
+            }
             Cancel_Click(sender, e);
         }
 
         private bool CheckForValidPsswords()
         {
-            if (ForAdminsVis is Visibility.Visible ||
+            if (ForAdminsVis is Visibility.Collapsed ||
                     (
                     User.Password == mv.LoggedUser.Password &&
                     !string.IsNullOrEmpty(NewPassword) &&
                     !string.IsNullOrEmpty(ConfirmPassword) &&
                     NewPassword == ConfirmPassword
-                    ) )
+                    ))
                 return true;
             MessageBox.Show("Один из паролей не совпадает!", "Уведомление!");
             return false;

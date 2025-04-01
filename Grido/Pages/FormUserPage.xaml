@@ -19,45 +19,34 @@
             <Button Padding="30,0" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Save_Click" Margin="0,20" Content="Сохранить"/>
         </StackPanel>
 
-        <StackPanel Orientation="Vertical" Grid.Column="1" Margin="40">
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="Логин:" Margin="10" Padding="20, 0"/>
-                <TextBox Width="400" Text="{Binding User.Login}" Margin="0, 10"/>
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+            <StackPanel HorizontalAlignment="Left" Orientation="Vertical">
+                <TextBlock Text="Логин:" Padding="20, 0"/>
+                <TextBox Width="400" Text="{Binding User.Login}" IsEnabled="{Binding IsEnabled}"/>
             </StackPanel>
 
-            <StackPanel Visibility="{Binding ForAdminsVis}" Orientation="Vertical">
-                <TextBlock Text="Текущий пароль:" Margin="10" Padding="20, 0"/>
-                <TextBox Width="400" Text="{Binding User.Password}" Margin="0, 10"/>
+            <StackPanel Visibility="{Binding ForAdminsVis}" Orientation="Vertical" HorizontalAlignment="Left">
+                <TextBlock Text="Текущий пароль:" Padding="20, 0"/>
+                <TextBox Width="400" Text="{Binding User.Password}" Margin="0, 10" IsEnabled="{Binding IsEnabled}"/>
             </StackPanel>
 
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="Ник:" Margin="10" Padding="20, 0"/>
-                <TextBox Width="400" Text="{Binding User.Nickname}" Margin="0, 10"/>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <TextBlock Text="Ник:" Padding="20, 0"/>
+                <TextBox Width="400" Text="{Binding User.Nickname}" Margin="0, 10" IsEnabled="{Binding IsEnabled}"/>
             </StackPanel>
 
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="Новый пароль:" Margin="10" Padding="20, 0"/>
-                <TextBox Width="400" Text="{Binding NewPassword}" Margin="0, 10"/>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <TextBlock Text="Новый пароль:" Padding="20, 0"/>
+                <TextBox Width="400" Text="{Binding NewPassword}" Margin="0, 10" IsEnabled="{Binding IsEnabled}"/>
             </StackPanel>
 
-            <StackPanel Visibility="{Binding ForAdminsVis}" Orientation="Vertical">
-                <TextBlock Text="Подтверждение нового пароля:" Margin="10" Padding="20, 0"/>
-                <TextBox Width="400" Text="{Binding ConfirmPassword}" Margin="0, 10"/>
+            <StackPanel Visibility="{Binding ForAdminsVis}" Orientation="Vertical" HorizontalAlignment="Left">
+                <TextBlock Text="Подтверждение нового пароля:" Padding="20, 0"/>
+                <TextBox Width="400" Text="{Binding ConfirmPassword}" Margin="0, 10" IsEnabled="{Binding IsEnabled}"/>
             </StackPanel>
+
+            <ComboBox ItemsSource="{Binding Roles}" SelectedItem="{Binding SelectedRole.Title}" Visibility="{Binding ComboVis}" Padding="5" Width="250" MaxWidth="400" HorizontalAlignment="Left" MinWidth="50" IsEnabled="{Binding IsEnabled}"/>
         </StackPanel>
     </Grid>
 </Page>
-<!--
-    public int Id { get; set; }
-
-    public int IdRole { get; set; }
-
-    public string Login { get; set; } = null!;
-
-    public string? Nickname { get; set; }
-
-    public string Password { get; set; } = null!;
-
-    public virtual Role IdRoleNavigation { get; set; } = null!;
-}
--->
+    
