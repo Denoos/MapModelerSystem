@@ -58,10 +58,6 @@ namespace Grido.Pages
             DataContext = this;
             this.mv = mv;
             this.IsEnabled = isen;
-            if (await api.GetVisibility(mv.LoggedUser, "admin") == Visibility.Visible)
-                ForAdminsVis = Visibility.Collapsed;
-            else ForAdminsVis = Visibility.Visible;
-            ComboVis = await api.GetVisibility(mv.LoggedUser, "admin");
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -69,30 +65,18 @@ namespace Grido.Pages
 
         private async void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (CheckForValidPsswords())
+            if (CheckForValidContent())
             {
-                User.Password = NewPassword;
-                User.IdRoleNavigation = await api.GetRoleOne(SelectedRole);
-                User.IdRole = User.IdRoleNavigation.Id;
                 if (IsAdd)
-                    await api.AddUser(User);
-                else await api.EditUser(User);
+                    await api.AddMap(Map);
+                else await api.EditMap(Map);
+                Cancel_Click(sender, e);
             }
-            Cancel_Click(sender, e);
         }
 
-        private bool CheckForValidPsswords()
+        private bool CheckForValidContent()
         {
-            if (ForAdminsVis is Visibility.Collapsed ||
-                    (
-                    User.Password == mv.LoggedUser.Password &&
-                    !string.IsNullOrEmpty(NewPassword) &&
-                    !string.IsNullOrEmpty(ConfirmPassword) &&
-                    NewPassword == ConfirmPassword
-                    ))
-                return true;
-            MessageBox.Show("Один из паролей не совпадает!", "Уведомление!");
-            return false;
+            return true;
         }
     }
 }
