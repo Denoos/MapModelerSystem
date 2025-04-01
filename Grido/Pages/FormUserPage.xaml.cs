@@ -27,35 +27,40 @@ namespace Grido.Pages
     {
         private MainWindow mv;
         private User user;
-        private bool IsAdd;
-        private List<Role> roles;
         private Role selectedRole;
-                        
-        private List<Role> Roles { get => roles; set { roles = value; Signal(); } }
+        private List<Role> roles;
+        private bool IsAdd;
+        private bool isen;
+        private string newPassword;
+        private string confirmPassword;
+        private Visibility forAdminsVis;
+
+        public User User { get => user; set { user = value; Signal(); } }
         private Role SelectedRole { get => selectedRole; set { selectedRole = value; Signal(); } }
+        private List<Role> Roles { get => roles; set { roles = value; Signal(); } }
+        public bool IsEnabled { get => isen; set { isen = value; Signal(); } }
+        public string NewPassword { get => newPassword; set { newPassword = value; Signal(); } }
+        public string ConfirmPassword { get => confirmPassword; set { confirmPassword = value; Signal(); } }
+        public Visibility ForAdminsVis { get => forAdminsVis; set { forAdminsVis = value; Signal(); } }
 
         private ApiController api = ApiController.Inst;
-        private bool isen;
-        public bool IsEnabled { get => isen; set { isen = value; Signal(); } }
-        public User User { get => user; set { user = value; Signal(); } }
+
         public FormUserPage(MainWindow mv, bool isen)
         {
             BaseStart(mv, isen);
             this.User = new();
             IsAdd = true;
         }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        private void Signal([CallerMemberName] string prop = null)
-           => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-
         public FormUserPage(MainWindow mv, User user, bool isen)
         {
             BaseStart(mv, isen);
             this.User = user;
             IsAdd = false;
         }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        private void Signal([CallerMemberName] string prop = null)
+           => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
 
         private async void BaseStart(MainWindow mv, bool isen)
         {
@@ -64,6 +69,9 @@ namespace Grido.Pages
             this.mv = mv;
             Roles = await api.GetAllRoles();
             this.IsEnabled = isen;
+            if (await api.GetVisibility(mv.LoggedUser, "admin") == Visibility.Visible)
+                ForAdminsVis = Visibility.Collapsed;
+            else ForAdminsVis = Visibility.Visible;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -71,8 +79,23 @@ namespace Grido.Pages
 
         private async void Save_Click(object sender, RoutedEventArgs e)
         {
-            await api.AddUser();
+            if (CheckForValidPsswords())
+                await api.AddUser();
             Cancel_Click(sender, e);
+        }
+
+        private bool CheckForValidPsswords()
+        {
+            if (ForAdminsVis is Visibility.Visible ||
+                    (
+                    User.Password == mv.LoggedUser.Password &&
+                    !string.IsNullOrEmpty(NewPassword) &&
+                    !string.IsNullOrEmpty(ConfirmPassword) &&
+                    NewPassword == ConfirmPassword
+                    ) )
+                return true;
+            MessageBox.Show("Один из паролей не совпадает!", "Уведомление!");
+            return false;
         }
     }
 }
