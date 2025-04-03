@@ -9,7 +9,19 @@
       Title="FormMapPage">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
 
+        <StackPanel Grid.Row="
+                    ">
+        
+        </StackPanel>
+        
+        <StackPanel>
+
+        </StackPanel>
     </Grid>
 </Page>
 
