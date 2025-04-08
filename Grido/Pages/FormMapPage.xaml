@@ -8,9 +8,53 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="FormMapPage">
 
-    <Grid>
+<<<<<<< HEAD
+    <StackPanel>
 
+        <TabControl>
+            <TabItem Header="Основнык параметры">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="Название карты:" />
+                        <TextBox Text="{Binding Map.Title}" />
+                        
+                        
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Row="1">
+                        <Button Click="Save_Click" Padding="30, 3" Margin="20, 0" Content="Сохранить" />
+                        <Button Click="Cancel_Click" Padding="30, 3" Margin="20, 0" Content="Назад" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem  Header="Структура карты">
+
+            </TabItem>
+        </TabControl>
+
+    </StackPanel>
+=======
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="1">
+        
+        </StackPanel>
+        
+        <StackPanel>
+
+        </StackPanel>
     </Grid>
+>>>>>>> c3cdc4c41ad421a0d1b132be096ed9fe76ed646c
 </Page>
 
 <!--

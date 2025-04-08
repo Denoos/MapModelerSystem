@@ -3,15 +3,11 @@ using System.Collections.Generic;
 
 namespace Grido.Models;
 
-public partial class Object
+public partial class Role
 {
     public int Id { get; set; }
 
     public string Title { get; set; } = null!;
 
-    public int Key { get; set; }
-
-    public string IsWall { get; set; } = null!;
-
-    public byte[] Image { get; set; } = null!;
+    public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

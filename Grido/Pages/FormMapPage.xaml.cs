@@ -65,18 +65,15 @@ namespace Grido.Pages
 
         private async void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (CheckForValidContent())
-            {
-                if (IsAdd)
-                    await api.AddMap(Map);
-                else await api.EditMap(Map);
-                Cancel_Click(sender, e);
-            }
+            if (IsAdd)
+                await api.AddMap(Map);
+            else await api.EditMap(Map);
+            Cancel_Click(sender, e);
         }
 
-        private bool CheckForValidContent()
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            return true;
+
         }
     }
 }
