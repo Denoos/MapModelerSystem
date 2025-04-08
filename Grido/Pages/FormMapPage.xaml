@@ -14,8 +14,7 @@
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="
-                    ">
+        <StackPanel Grid.Row="1">
         
         </StackPanel>
         
