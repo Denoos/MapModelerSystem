@@ -8,9 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="FormMapPage">
 
-<<<<<<< HEAD
     <StackPanel>
-
         <TabControl>
             <TabItem Header="Основнык параметры">
                 <Grid>
@@ -38,8 +36,12 @@
             </TabItem>
         </TabControl>
 
-    </StackPanel>
-=======
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -54,7 +56,8 @@
 
         </StackPanel>
     </Grid>
->>>>>>> c3cdc4c41ad421a0d1b132be096ed9fe76ed646c
+        </Grid>
+    </StackPanel>
 </Page>
 
 <!--
