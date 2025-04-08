@@ -20,7 +20,7 @@ namespace ApiForGrido.Controllers
         [HttpDelete]
         public bool Del(User user) => _db.DeleteUser(user);
         [HttpGet]
-        public User GetOne(User user) => _db.GetOneUser();
+        public User GetOne(int id) => _db.GetOneUser(id);
         [HttpGet]
         public List<Map> GetMany(User user) => _db.GetManyUsers();
     }

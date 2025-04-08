@@ -20,7 +20,7 @@ namespace ApiForGrido.Controllers
         [HttpDelete]
         public bool Del(Map map) => _db.DeleteMap(map);
         [HttpGet]
-        public Map GetOne(Map map) => _db.GetOneMap();
+        public Map GetOne(int id) => _db.GetOneMap(id);
         [HttpGet]
         public List<Map> GetMany(Map map) => _db.GetManyMaps();
     }

@@ -17,6 +17,11 @@ namespace ApiForGrido.DataBase
             throw new NotImplementedException();
         }
 
+        internal User AuthUser(User user)
+        {
+            throw new NotImplementedException();
+        }
+
         internal bool DeleteMap(Map map)
         {
             throw new NotImplementedException();
@@ -37,6 +42,11 @@ namespace ApiForGrido.DataBase
             throw new NotImplementedException();
         }
 
+        internal byte[] GetDefaultPhoto()
+        {
+            throw new NotImplementedException();
+        }
+
         internal List<Map> GetManyMaps()
         {
             throw new NotImplementedException();
@@ -47,12 +57,12 @@ namespace ApiForGrido.DataBase
             throw new NotImplementedException();
         }
 
-        internal Map GetOneMap()
+        internal Map GetOneMap(int id)
         {
             throw new NotImplementedException();
         }
 
-        internal User GetOneUser()
+        internal User GetOneUser(int id)
         {
             throw new NotImplementedException();
         }
