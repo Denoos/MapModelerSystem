@@ -29,10 +29,16 @@ namespace Grido.Pages
         private List<string> roles;
         private bool IsAdd;
         private bool isen;
+        private bool isel;
         private string selObj;
-
+        private int[,] mapInt;
+        private Button[,] mapBut;
         public Map Map { get => map; set { map = value; Signal(); } }
         public bool IsEnabled { get => isen; set { isen = value; Signal(); } }
+        public bool IsSelectedTab { get => isel; set { isel = value; Signal(); RendetMapField(); } }
+        public int[,] MapIntVarity { get => mapInt; set { mapInt = value; Signal(); } }
+        public Button[,] MapButtonsVarity { get => mapBut; set { mapBut = value; Signal(); } }
+
         public string SelectedObject { get => selObj; set { selObj = value; Signal(); } }
 
         private ApiController api = ApiController.Inst;
@@ -91,5 +97,24 @@ namespace Grido.Pages
                     break;
             }
         }
+        private void RendetMapField()
+        {
+            MapIntVarity = new int[Map.Width, Map.Height];
+            MapButtonsVarity = new Button[Map.Width, Map.Height];
+
+            var defBut = new Button() { Height = 20, Width = 20 };
+
+            for (int i = 0; i < MapIntVarity.Length; i++)
+                for (int j = 0; j < MapIntVarity.Length; j++)
+                {
+                    MapIntVarity[i, j] = 0;
+                    MapButtonsVarity[i, j] = defBut;
+                    ButtonsField.Children.Add(MapButtonsVarity[i, j]);
+                    
+                }
+
+
+        }
     }
 }
+//ButtonsField - Canvas

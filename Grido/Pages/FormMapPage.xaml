@@ -28,7 +28,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem  Header="Структура карты">
+            <TabItem IsSelected="{Binding IsSelectedTab}" Header="Структура карты">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="4*"/>
