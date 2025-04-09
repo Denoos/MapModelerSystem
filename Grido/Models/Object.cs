@@ -10,8 +10,4 @@ public partial class Object
     public string Title { get; set; } = null!;
 
     public int Key { get; set; }
-
-    public string IsWall { get; set; } = null!;
-
-    public byte[] Image { get; set; } = null!;
 }

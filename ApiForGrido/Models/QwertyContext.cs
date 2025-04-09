@@ -52,8 +52,8 @@ public partial class QwertyContext : DbContext
                 .HasColumnType("int(11)")
                 .HasColumnName("id_user");
             entity.Property(e => e.Structure)
+                .HasMaxLength(401)
                 .HasDefaultValueSql("''")
-                .HasColumnType("varbinary(8000)")
                 .HasColumnName("structure");
             entity.Property(e => e.Title)
                 .HasMaxLength(255)
@@ -77,14 +77,6 @@ public partial class QwertyContext : DbContext
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
-            entity.Property(e => e.Image)
-                .HasDefaultValueSql("''")
-                .HasColumnType("varbinary(8000)")
-                .HasColumnName("image");
-            entity.Property(e => e.IsWall)
-                .HasMaxLength(255)
-                .HasDefaultValueSql("''")
-                .HasColumnName("is_wall");
             entity.Property(e => e.Key)
                 .HasColumnType("int(11)")
                 .HasColumnName("key");

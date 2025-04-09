@@ -15,7 +15,7 @@ public partial class Map
 
     public int Width { get; set; }
 
-    public byte[] Structure { get; set; } = null!;
+    public string Structure { get; set; } = null!;
 
     public virtual User IdUserNavigation { get; set; } = null!;
 }
