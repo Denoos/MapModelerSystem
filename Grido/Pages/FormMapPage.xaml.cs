@@ -1,4 +1,4 @@
-﻿using Grido.Models;
+using Grido.Models;
 using Grido.OtherLogic;
 using System;
 using System.Collections.Generic;
