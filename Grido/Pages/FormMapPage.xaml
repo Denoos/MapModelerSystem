@@ -19,61 +19,42 @@
 
                     <StackPanel Grid.Row="0">
                         <TextBlock Text="Название карты:" />
-                        <TextBox Text="{Binding Map.Title}" />
-                        
-                        
+                        <TextBox Margin="0,10" Padding="0, 10" Text="{Binding Map.Title}" />
+                        <TextBlock Text="Высота карты:" />
+                        <TextBox Margin="0,10" Padding="0, 10" Text="{Binding Map.Width}" />
+                        <TextBlock Text="Ширина карты:" />
+                        <TextBox Margin="0,10" Padding="0, 10" Text="{Binding Map.Height}" />
+
+
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Grid.Row="1">
-                        <Button Click="Save_Click" Padding="30, 3" Margin="20, 0" Content="Сохранить" />
-                        <Button Click="Cancel_Click" Padding="30, 3" Margin="20, 0" Content="Назад" />
+                        <Button Click="Save_Click" Padding="30, 3" Margin="20, 30" Content="Сохранить" />
+                        <Button Click="Cancel_Click" Padding="30, 3" Margin="20, 30" Content="Назад" />
                     </StackPanel>
                 </Grid>
             </TabItem>
 
             <TabItem  Header="Структура карты">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
 
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Grid.Column="0">
+                        <Canvas x:Name="" Width="600" Height="350" Margin="20, 10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            
+                        </Canvas>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" Grid.Column="1">
+                        <RadioButton Click="ChangeObject_Click" Content="wall" Background="Black" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Width="80" Height="80" />
+                        <RadioButton Click="ChangeObject_Click" Content="player" Background="Red" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Width="80" Height="80" />
+                        <RadioButton Click="ChangeObject_Click" Content="floor" Background="Green" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Width="80" Height="80" />
+                    </StackPanel>
+                </Grid>
             </TabItem>
         </TabControl>
-
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="4*"/>
-        </Grid.ColumnDefinitions>
-
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="4*"/>
-        </Grid.ColumnDefinitions>
-
-        <StackPanel Grid.Row="1">
-        
-        </StackPanel>
-        
-        <StackPanel>
-
-        </StackPanel>
-    </Grid>
-        </Grid>
     </StackPanel>
 </Page>
-
-<!--
-       {
-    public int Id { get; set; }
-
-    public int IdUser { get; set; }
-
-    public string? Title { get; set; }
-
-    public int Height { get; set; }
-
-    public int Width { get; set; }
-
-    public byte[] Structure { get; set; } = null!;
-
-    public virtual User IdUserNavigation { get; set; } = null!;
-} 
--->

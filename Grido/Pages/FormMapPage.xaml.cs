@@ -29,9 +29,11 @@ namespace Grido.Pages
         private List<string> roles;
         private bool IsAdd;
         private bool isen;
+        private string selObj;
 
         public Map Map { get => map; set { map = value; Signal(); } }
         public bool IsEnabled { get => isen; set { isen = value; Signal(); } }
+        public string SelectedObject { get => selObj; set { selObj = value; Signal(); } }
 
         private ApiController api = ApiController.Inst;
 
@@ -58,6 +60,7 @@ namespace Grido.Pages
             DataContext = this;
             this.mv = mv;
             this.IsEnabled = isen;
+            this.SelectedObject = "0";
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -71,9 +74,22 @@ namespace Grido.Pages
             Cancel_Click(sender, e);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ChangeObject_Click(object sender, RoutedEventArgs e)
         {
+            var sd = (RadioButton)sender;
 
+            switch (sd.Content)
+            {
+                case "floor":
+                    SelectedObject = "0";
+                    break;
+                case "wall":
+                    SelectedObject = "1";
+                    break;
+                case "player":
+                    SelectedObject = "2";
+                    break;
+            }
         }
     }
 }
