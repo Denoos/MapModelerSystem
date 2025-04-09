@@ -1,43 +1,95 @@
-﻿<Page x:Class="Grido.Pages.FormMapPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Grido.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="FormMapPage">
+using Grido.Models;
+using Grido.OtherLogic;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="4*"/>
-        </Grid.ColumnDefinitions>
+namespace Grido.Pages
+{
+    /// <summary>
+    /// Логика взаимодействия для FormMapPage.xaml
+    /// </summary>
+    public partial class FormMapPage : Page
+    {
+        private MainWindow mv;
+        private Map map;
+        private List<string> roles;
+        private bool IsAdd;
+        private bool isen;
+        private string selObj;
 
-        <StackPanel Grid.Row="1">
-        
-        </StackPanel>
-        
-        <StackPanel>
+        public Map Map { get => map; set { map = value; Signal(); } }
+        public bool IsEnabled { get => isen; set { isen = value; Signal(); } }
+        public string SelectedObject { get => selObj; set { selObj = value; Signal(); } }
 
-        </StackPanel>
-    </Grid>
-</Page>
+        private ApiController api = ApiController.Inst;
 
-<!--
-       {
-    public int Id { get; set; }
+        public FormMapPage(MainWindow mv, bool isen)
+        {
+            BaseStart(mv, isen);
+            this.Map = new();
+            IsAdd = true;
+        }
+        public FormMapPage(MainWindow mv, Map map, bool isen)
+        {
+            BaseStart(mv, isen);
+            this.Map = map;
+            IsAdd = false;
+        }
 
-    public int IdUser { get; set; }
+        public event PropertyChangedEventHandler? PropertyChanged;
+        private void Signal([CallerMemberName] string prop = null)
+           => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
 
-    public string? Title { get; set; }
+        private async void BaseStart(MainWindow mv, bool isen)
+        {
+            InitializeComponent();
+            DataContext = this;
+            this.mv = mv;
+            this.IsEnabled = isen;
+            this.SelectedObject = "0";
+        }
 
-    public int Height { get; set; }
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+            => mv.CurrentPage = new MainPage(mv, mv.LoggedUser);
 
-    public int Width { get; set; }
+        private async void Save_Click(object sender, RoutedEventArgs e)
+        {
+            if (IsAdd)
+                await api.AddMap(Map);
+            else await api.EditMap(Map);
+            Cancel_Click(sender, e);
+        }
 
-    public byte[] Structure { get; set; } = null!;
+        private void ChangeObject_Click(object sender, RoutedEventArgs e)
+        {
+            var sd = (RadioButton)sender;
 
-    public virtual User IdUserNavigation { get; set; } = null!;
-} 
--->
+            switch (sd.Content)
+            {
+                case "floor":
+                    SelectedObject = "0";
+                    break;
+                case "wall":
+                    SelectedObject = "1";
+                    break;
+                case "player":
+                    SelectedObject = "2";
+                    break;
+            }
+        }
+    }
+}
