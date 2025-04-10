@@ -21,9 +21,9 @@
                         <TextBlock Text="Название карты:" />
                         <TextBox Margin="0,10" Padding="0, 10" Text="{Binding Map.Title}" />
                         <TextBlock Text="Высота карты:" />
-                        <TextBox Margin="0,10" Padding="0, 10" Text="{Binding Map.Width}" />
-                        <TextBlock Text="Ширина карты:" />
                         <TextBox Margin="0,10" Padding="0, 10" Text="{Binding Map.Height}" />
+                        <TextBlock Text="Ширина карты:" />
+                        <TextBox Margin="0,10" Padding="0, 10" Text="{Binding Map.Width}" />
                     </StackPanel>
                 </Grid>
             </TabItem>

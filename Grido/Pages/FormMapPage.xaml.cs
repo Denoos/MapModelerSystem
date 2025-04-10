@@ -35,7 +35,7 @@ namespace Grido.Pages
         private Button[,] mapBut;
         public Map Map { get => map; set { map = value; Signal(); } }
         public bool IsEnabled { get => isen; set { isen = value; Signal(); } }
-        public bool IsSelectedTab { get => isel; set { isel = value; Signal(); RendetMapField(); } }
+        public bool IsSelectedTab { get => isel; set { isel = value; Signal(); if (isel) RenderMapField(); } }
         public int[,] MapIntVarity { get => mapInt; set { mapInt = value; Signal(); } }
         public Button[,] MapButtonsVarity { get => mapBut; set { mapBut = value; Signal(); } }
 
@@ -97,23 +97,22 @@ namespace Grido.Pages
                     break;
             }
         }
-        private void RendetMapField()
+        private void RenderMapField()
         {
             MapIntVarity = new int[Map.Width, Map.Height];
             MapButtonsVarity = new Button[Map.Width, Map.Height];
 
-            var defBut = new Button() { Height = 20, Width = 20 };
+            ButtonsField.Children.Clear();
 
-            for (int i = 0; i < MapIntVarity.Length; i++)
-                for (int j = 0; j < MapIntVarity.Length; j++)
+            for (int i = 0; i < Map.Width; i++)
+                for (int j = 0; j < Map.Height; j++)
                 {
                     MapIntVarity[i, j] = 0;
-                    MapButtonsVarity[i, j] = defBut;
+                    MapButtonsVarity[i, j] = new Button() { Height = 20, Width = 20 };
+                    Canvas.SetLeft(MapButtonsVarity[i, j], 1 + (MapButtonsVarity[i, j].Width + 1) * i);
+                    Canvas.SetTop(MapButtonsVarity[i, j], 1 + (MapButtonsVarity[i, j].Height + 1) * j);
                     ButtonsField.Children.Add(MapButtonsVarity[i, j]);
-                    
                 }
-
-
         }
     }
 }
