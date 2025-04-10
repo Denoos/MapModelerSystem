@@ -72,10 +72,13 @@ namespace Grido.Pages
 
         private async void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (IsAdd)
-                await api.AddMap(Map);
-            else await api.EditMap(Map);
-            Cancel_Click(sender, e);
+            if (CheckForCorrect())
+            {
+                if (IsAdd)
+                    await api.AddMap(Map);
+                else await api.EditMap(Map);
+                Cancel_Click(sender, e);
+            }
         }
 
         private void ChangeObject_Click(object sender, RoutedEventArgs e)
@@ -118,8 +121,14 @@ namespace Grido.Pages
 
         private void RenderMapField()
         {
-            if (MapButtonsVarity is not null && MapButtonsVarity.Length > 0)
+            if (Map.Height <= 0 || Map.Width <= 0)
                 return;
+
+            if (Map.Height > 16)
+                map.Height = 16;
+            if (Map.Width > 28)
+                map.Width = 28;
+
             MapButtonsVarity = new Button[Map.Width, Map.Height];
 
             ButtonsField.Children.Clear();
@@ -133,6 +142,19 @@ namespace Grido.Pages
                     Canvas.SetTop(MapButtonsVarity[i, j], 1 + (MapButtonsVarity[i, j].Height + 1) * j);
                     ButtonsField.Children.Add(MapButtonsVarity[i, j]);
                 }
+        }
+
+        private bool CheckForCorrect()
+        {
+            var plCount = 0;
+
+            foreach (var p in MapButtonsVarity)
+                if (p.Background ==  Brushes.Red)
+                    plCount++;
+
+            if (plCount < 3 && plCount > 0)
+                return true;
+            return false;
         }
     }
 }
