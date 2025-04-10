@@ -97,6 +97,27 @@ namespace Grido.Pages
                     break;
             }
         }
+        private void ButtonAtCanvas_Click(object sender, RoutedEventArgs e)
+        {
+            var snd = (Button)sender;
+
+            switch (SelectedObject)
+            {
+                case "0":
+                    snd.Background = Brushes.Green;
+                    break;
+                case "1":
+                    snd.Background = Brushes.Black;
+                    break;
+                case "2":
+                    snd.Background = Brushes.Red;
+                    break;
+                default:
+                    MessageBox.Show("Выберите цвет на панели в правой чати окна!", "Ошибка!");
+                    break;
+            }
+        }
+
         private void RenderMapField()
         {
             MapIntVarity = new int[Map.Width, Map.Height];
@@ -108,7 +129,8 @@ namespace Grido.Pages
                 for (int j = 0; j < Map.Height; j++)
                 {
                     MapIntVarity[i, j] = 0;
-                    MapButtonsVarity[i, j] = new Button() { Height = 20, Width = 20 };
+                    MapButtonsVarity[i, j] = new Button() { Height = 20, Width = 20, Background = Brushes.Green };
+                    MapButtonsVarity[i, j].Click += new RoutedEventHandler(ButtonAtCanvas_Click);
                     Canvas.SetLeft(MapButtonsVarity[i, j], 1 + (MapButtonsVarity[i, j].Width + 1) * i);
                     Canvas.SetTop(MapButtonsVarity[i, j], 1 + (MapButtonsVarity[i, j].Height + 1) * j);
                     ButtonsField.Children.Add(MapButtonsVarity[i, j]);
@@ -116,4 +138,3 @@ namespace Grido.Pages
         }
     }
 }
-//ButtonsField - Canvas
