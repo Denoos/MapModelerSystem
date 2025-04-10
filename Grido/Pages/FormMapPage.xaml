@@ -27,8 +27,8 @@
                     </StackPanel>
 
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                        <Button Content="Сохранить" Click="" Padding="20, 3" Margin="10"/>
-                        <Button Content="Назад" Click="" Padding="20, 3" Margin="10"/>
+                        <Button Content="Сохранить" Click="Save_Click" Padding="20, 3" Margin="10"/>
+                        <Button Content="Назад" Click="Cancel_Click" Padding="20, 3" Margin="10"/>
                     </StackPanel>
                 </Grid>
             </TabItem>

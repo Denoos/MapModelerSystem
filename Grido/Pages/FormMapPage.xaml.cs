@@ -31,12 +31,10 @@ namespace Grido.Pages
         private bool isen;
         private bool isel;
         private string selObj;
-        private int[,] mapInt;
         private Button[,] mapBut;
         public Map Map { get => map; set { map = value; Signal(); } }
         public bool IsEnabled { get => isen; set { isen = value; Signal(); } }
         public bool IsSelectedTab { get => isel; set { isel = value; Signal(); if (isel) RenderMapField(); } }
-        public int[,] MapIntVarity { get => mapInt; set { mapInt = value; Signal(); } }
         public Button[,] MapButtonsVarity { get => mapBut; set { mapBut = value; Signal(); } }
 
         public string SelectedObject { get => selObj; set { selObj = value; Signal(); } }
@@ -120,7 +118,8 @@ namespace Grido.Pages
 
         private void RenderMapField()
         {
-            MapIntVarity = new int[Map.Width, Map.Height];
+            if (MapButtonsVarity is not null && MapButtonsVarity.Length > 0)
+                return;
             MapButtonsVarity = new Button[Map.Width, Map.Height];
 
             ButtonsField.Children.Clear();
@@ -128,7 +127,6 @@ namespace Grido.Pages
             for (int i = 0; i < Map.Width; i++)
                 for (int j = 0; j < Map.Height; j++)
                 {
-                    MapIntVarity[i, j] = 0;
                     MapButtonsVarity[i, j] = new Button() { Height = 20, Width = 20, Background = Brushes.Green };
                     MapButtonsVarity[i, j].Click += new RoutedEventHandler(ButtonAtCanvas_Click);
                     Canvas.SetLeft(MapButtonsVarity[i, j], 1 + (MapButtonsVarity[i, j].Width + 1) * i);
