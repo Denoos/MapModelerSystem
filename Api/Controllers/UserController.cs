@@ -14,28 +14,17 @@ namespace Api.Controllers
         UserController()
             => _db = DataBasePoint.Instance;
 
-        [HttpPost]
+        [HttpPost("Add")]
         public bool Add(Map map) => _db.AddMap(map);
-        [HttpPut]
+        [HttpPut("Edit")]
         public bool Edit(Map map) => _db.EditMap(map);
-        [HttpDelete]
+        [HttpDelete("Del")]
         public bool Del(Map map) => _db.DeleteMap(map);
 
-        //
-        //  Создается метод чисто по типу.
-        //
+        [HttpGet("GetOne")]
+        public User GetOne(int id) => _db.GetOneUser(id);
 
-
-        //[HttpGet]
-        //public User GetOne(int id) => _db.GetOneUser(id);
-
-
-        //[HttpGet(Name = "GetOneMap")]
-        //public Map GetOne(int id) => _db.GetOneMap(id);
-
-
-
-        [HttpGet]
+        [HttpGet("GetMany")]
         public List<Map> GetMany(Map map) => _db.GetManyMaps();
     }
 }

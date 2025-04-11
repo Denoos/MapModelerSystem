@@ -13,13 +13,13 @@ namespace Api.Controllers
         AuthController()
             => _db = DataBasePoint.Instance;
 
-        [HttpPost]
+        [HttpPost("Reg")]
         public bool Reg(User user) => _db.AddUser(user);
-        [HttpPut]
+        [HttpPut("Upd")]
         public bool Upd(User user) => _db.EditUser(user);
-        [HttpDelete]
+        [HttpDelete("Rem")]
         public bool Rem(User user) => _db.DeleteUser(user);
-        [HttpGet]
+        [HttpGet("Auth")]
         public User Auth(User user) => _db.AuthUser(user);
     }
 }

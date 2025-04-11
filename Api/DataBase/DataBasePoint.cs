@@ -6,15 +6,23 @@ namespace ApiForGrido.DataBase
     {
         private static DataBasePoint inst;
         public static DataBasePoint Instance { get => inst ??= new(); }
+        private QwertyContext _context = new();
 
-        internal bool AddMap(Map map)
+
+        public bool AddMap(Map map)
         {
-            return true;
+            if (map is null)
+                return false;
+            _context.Maps.Add(map);
+            return _context.Maps.Contains(map);
         }
 
-        internal bool AddUser(User user)
+        public bool AddUser(User user)
         {
-            return true;
+            if (user is null)
+                return false;
+            _context.Users.Add(user);
+            return _context.Users.Contains(user);
         }
 
         internal User AuthUser(User user)
@@ -22,23 +30,32 @@ namespace ApiForGrido.DataBase
             return user;
         }
 
-        internal bool DeleteMap(Map map)
+        public bool DeleteMap(Map map)
         {
-            return true;
-
+            if (map is null || !_context.Maps.Contains(map))
+                return false;
+            _context.Maps.Remove(map);
+            return !_context.Maps.Contains(map);
         }
 
-        internal bool DeleteUser(User user)
+        public bool DeleteUser(User user)
         {
+            if (user is null || !_context.Users.Contains(user))
+                return false;
+            _context.Users.Remove(user);
+            return !_context.Users.Contains(user);
+        }
+
+        public bool EditMap(Map map)
+        {
+           if (map is null || _context.Maps.FirstOrDefault(s => s.Id == map.Id) is null)
+                return false;
+
+            _context.Maps.Update(map);
             return true;
         }
 
-        internal bool EditMap(Map map)
-        {
-            return true;
-        }
-
-        internal bool EditUser(User user)
+        public bool EditUser(User user)
         {
             return true;
         }

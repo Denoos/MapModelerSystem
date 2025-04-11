@@ -16,11 +16,11 @@ namespace Api.Controllers
         AdminController()
             => _db = DataBasePoint.Instance;
 
-        [HttpPost]
+        [HttpPost("Add")]
         public bool Add(User user) => _db.AddUser(user);
-        [HttpPut]
+        [HttpPut("Edit")]
         public bool Edit(User user) => _db.EditUser(user);
-        [HttpDelete]
+        [HttpDelete("Del")]
         public bool Del(User user) => _db.DeleteUser(user);
 
         //
@@ -28,11 +28,11 @@ namespace Api.Controllers
         //
 
 
-        //[HttpGet]
-        //public User GetOne(int id) => _db.GetOneUser(id);
+        [HttpGet("GetOne")]
+        public User GetOne(int id) => _db.GetOneUser(id);
 
 
-        [HttpGet]
+        [HttpGet("GetMany")]
         public List<Map> GetMany(User user) => _db.GetManyUsers();
         
     }

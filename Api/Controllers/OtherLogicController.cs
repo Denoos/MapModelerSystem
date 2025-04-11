@@ -9,15 +9,10 @@ namespace Api.Controllers
     public class OtherLogicController : ControllerBase
     {
         DataBasePoint _db;
-        private readonly ILogger<OtherLogicController> _logger;
-
         OtherLogicController()
             => _db = DataBasePoint.Instance;
 
-        public OtherLogicController(ILogger<OtherLogicController> logger)
-            => _logger = logger;
-
-        [HttpGet(Name = "GetDefaultPhoto")]
+        [HttpGet("GetDefaultPhoto")]
         public byte[] GetDefaultPhoto() => _db.GetDefaultPhoto();
     }
 }
