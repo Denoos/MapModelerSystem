@@ -57,6 +57,10 @@ namespace ApiForGrido.DataBase
 
         public bool EditUser(User user)
         {
+            if (user is null || _context.Users.FirstOrDefault(s => s.Id == user.Id) is null)
+                return false;
+
+            _context.Users.Update(user);
             return true;
         }
 
