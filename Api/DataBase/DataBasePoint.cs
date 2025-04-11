@@ -9,62 +9,63 @@ namespace ApiForGrido.DataBase
 
         internal bool AddMap(Map map)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         internal bool AddUser(User user)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         internal User AuthUser(User user)
         {
-            throw new NotImplementedException();
+            return user;
         }
 
         internal bool DeleteMap(Map map)
         {
-            throw new NotImplementedException();
+            return true;
+
         }
 
         internal bool DeleteUser(User user)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         internal bool EditMap(Map map)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         internal bool EditUser(User user)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         internal byte[] GetDefaultPhoto()
         {
-            throw new NotImplementedException();
+            return [];
         }
 
         internal List<Map> GetManyMaps()
         {
-            throw new NotImplementedException();
+            return [];
         }
 
         internal List<Map> GetManyUsers()
         {
-            throw new NotImplementedException();
+            return [];
         }
 
         internal Map GetOneMap(int id)
         {
-            throw new NotImplementedException();
+            return new();
         }
 
         internal User GetOneUser(int id)
         {
-            throw new NotImplementedException();
+            return new();
         }
     }
 }

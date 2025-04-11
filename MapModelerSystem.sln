@@ -11,9 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DesktopClient", "DesktopCli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Grido", "Grido\Grido.csproj", "{C4A5E787-348A-442D-901F-D49E0640688A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiForGrido", "ApiForGrido\ApiForGrido.csproj", "{5D0DBADD-D5C0-4AC0-91F5-7020D62E9397}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiForGrido", "ApiForGrido\ApiForGrido.csproj", "{5D0DBADD-D5C0-4AC0-91F5-7020D62E9397}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{9D840B61-F2AE-4CE4-A644-14EBA1FD6D79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{1051F8C5-A846-4D3E-A5B2-333FDC801950}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{5D0DBADD-D5C0-4AC0-91F5-7020D62E9397}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D0DBADD-D5C0-4AC0-91F5-7020D62E9397}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D0DBADD-D5C0-4AC0-91F5-7020D62E9397}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1051F8C5-A846-4D3E-A5B2-333FDC801950}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1051F8C5-A846-4D3E-A5B2-333FDC801950}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1051F8C5-A846-4D3E-A5B2-333FDC801950}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1051F8C5-A846-4D3E-A5B2-333FDC801950}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C4A5E787-348A-442D-901F-D49E0640688A} = {7B146422-1BF8-424E-BDBE-0BDA7286CEC7}
 		{5D0DBADD-D5C0-4AC0-91F5-7020D62E9397} = {36D591C7-65C7-A0D1-1CBC-10CDE441BDC8}
+		{1051F8C5-A846-4D3E-A5B2-333FDC801950} = {9D840B61-F2AE-4CE4-A644-14EBA1FD6D79}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C0498713-1F2B-4F14-8EA6-0BAFFA8EE5DD}
