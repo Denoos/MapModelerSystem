@@ -9,7 +9,7 @@ namespace Api.Controllers
     public class OtherLogicController : ControllerBase
     {
         DataBasePoint _db;
-        OtherLogicController()
+        public OtherLogicController()
             => _db = DataBasePoint.Instance;
 
         [HttpGet("GetDefaultPhoto")]

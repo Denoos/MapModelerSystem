@@ -10,7 +10,7 @@ namespace Api.Controllers
     public class AuthController : ControllerBase
     {
         DataBasePoint _db;
-        AuthController()
+        public AuthController()
             => _db = DataBasePoint.Instance;
 
         [HttpPost("Reg")]

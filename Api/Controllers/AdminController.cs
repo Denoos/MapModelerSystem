@@ -13,7 +13,7 @@ namespace Api.Controllers
        
         DataBasePoint _db;
 
-        AdminController()
+        public AdminController()
             => _db = DataBasePoint.Instance;
 
         [HttpPost("Add")]
@@ -29,7 +29,7 @@ namespace Api.Controllers
         public User GetOne(int id) => _db.GetOneUser(id);
 
         [HttpGet("GetMany")]
-        public List<User> GetMany(User user) => _db.GetManyUsers();
+        public List<User> GetMany() => _db.GetManyUsers();
         
     }
 }

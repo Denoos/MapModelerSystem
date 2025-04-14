@@ -69,12 +69,9 @@ namespace ApiForGrido.DataBase
             return true;
         }
 
-        internal byte[] GetDefaultPhoto()
-        {
-
-
-            return [];
-        }
+        public byte[] GetDefaultPhoto()
+            
+            => File.ReadAllBytes("Resources\\1.jpg");
 
         public List<Map> GetManyMaps()
             => [.. _context.Maps];

@@ -11,7 +11,7 @@ namespace Api.Controllers
     {
         DataBasePoint _db;
 
-        UserController()
+        public UserController()
             => _db = DataBasePoint.Instance;
 
         [HttpPost("Add")]
@@ -27,6 +27,6 @@ namespace Api.Controllers
         public Map GetOne(int id) => _db.GetOneMap(id);
 
         [HttpGet("GetMany")]
-        public List<Map> GetMany(Map map) => _db.GetManyMaps();
+        public List<Map> GetMany() => _db.GetManyMaps();
     }
 }
