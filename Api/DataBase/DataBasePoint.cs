@@ -1,5 +1,6 @@
 ﻿using Grido.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace ApiForGrido.DataBase
 {
@@ -22,6 +23,12 @@ namespace ApiForGrido.DataBase
         {
             if (user is null)
                 return false;
+            if (user.IdRole == 0)
+            {
+                user.IdRole = 1;
+                user.IdRoleNavigation = _context.Roles.FirstOrDefault(s => s.Id == user.IdRole);
+            }
+
             _context.Users.Add(user);
             return _context.Users.Contains(user);
         }
@@ -78,6 +85,9 @@ namespace ApiForGrido.DataBase
 
         public List<User> GetManyUsers()
             => [.. _context.Users];
+        
+        public List<Role> GetManyRoles()
+            => [.. _context.Roles];
 
         public Map GetOneMap(int id)
             => _context.Maps.FirstOrDefault(s => s.Id == id);

@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -16,14 +18,20 @@ namespace Grido.OtherLogic
         public static ApiController Inst { get => inst ?? new(); }
         HttpClient _client;
 
-        //ApiController()
-        // => _client = new() { BaseAddress = new Uri("") }; //НУЖНО добавить сюда адрес апи и раскоментить
+        public ApiController()
+         => _client = new() { BaseAddress = new Uri("http://localhost:5000/api/") };
 
         User User;
-        public async Task<bool> Registration(User user) //отправляет в апи, и возвращает 1 если user ==  декод от респонса else 0
+        public async Task<bool> Registration(User user)
         {
-            User = user;
-            return true;
+            user.IdRoleNavigation = new();
+            user.Maps = [];
+            var q = JsonSerializer.Serialize(user);
+
+            var responce = await _client.PostAsJsonAsync("Auth/Reg", user);
+
+            var a = responce.Content.ReadFromJsonAsync<bool>();
+            return responce.Content.ToString() == "true";
         }
         public async Task<User> Authorisation(User user) //отправляет в апи, и возвращает декод от респонса
         {

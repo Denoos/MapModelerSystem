@@ -31,5 +31,7 @@ namespace Api.Controllers
         [HttpGet("GetMany")]
         public List<User> GetMany() => _db.GetManyUsers();
         
+        [HttpGet("GetRoles")]
+        public List<Role> GetRoles() => _db.GetManyRoles();
     }
 }
