@@ -1,4 +1,5 @@
 ﻿using Grido.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApiForGrido.DataBase
 {
@@ -25,9 +26,13 @@ namespace ApiForGrido.DataBase
             return _context.Users.Contains(user);
         }
 
-        internal User AuthUser(User user)
+        public User AuthUser(User user)
         {
-            return user;
+            if (user is null || string.IsNullOrEmpty(user.Login) || string.IsNullOrEmpty(user.Password) || string.IsNullOrWhiteSpace(user.Login) || string.IsNullOrWhiteSpace(user.Password))
+                return user;
+
+            var result = _context.Users.FirstOrDefault(s => s.Id == user.Id);
+            return result ??= new();
         }
 
         public bool DeleteMap(Map map)
@@ -66,27 +71,21 @@ namespace ApiForGrido.DataBase
 
         internal byte[] GetDefaultPhoto()
         {
+
+
             return [];
         }
 
-        internal List<Map> GetManyMaps()
-        {
-            return [];
-        }
+        public List<Map> GetManyMaps()
+            => [.. _context.Maps];
 
-        internal List<Map> GetManyUsers()
-        {
-            return [];
-        }
+        public List<User> GetManyUsers()
+            => [.. _context.Users];
 
-        internal Map GetOneMap(int id)
-        {
-            return new();
-        }
+        public Map GetOneMap(int id)
+            => _context.Maps.FirstOrDefault(s => s.Id == id);
 
-        internal User GetOneUser(int id)
-        {
-            return new();
-        }
+        public User GetOneUser(int id)
+            => _context.Users.FirstOrDefault(s => s.Id == id);
     }
 }

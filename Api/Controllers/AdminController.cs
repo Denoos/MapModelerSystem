@@ -18,22 +18,18 @@ namespace Api.Controllers
 
         [HttpPost("Add")]
         public bool Add(User user) => _db.AddUser(user);
+
         [HttpPut("Edit")]
         public bool Edit(User user) => _db.EditUser(user);
+
         [HttpDelete("Del")]
         public bool Del(User user) => _db.DeleteUser(user);
-
-        //
-        //  Создается метод чисто по типу.
-        //
-
 
         [HttpGet("GetOne")]
         public User GetOne(int id) => _db.GetOneUser(id);
 
-
         [HttpGet("GetMany")]
-        public List<Map> GetMany(User user) => _db.GetManyUsers();
+        public List<User> GetMany(User user) => _db.GetManyUsers();
         
     }
 }
