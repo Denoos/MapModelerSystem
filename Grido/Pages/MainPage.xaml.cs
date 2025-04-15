@@ -134,28 +134,18 @@ namespace Grido.Pages
             => mv.CurrentPage = new FormUserPage(mv, SelectedUser, false);
         
         private void Enter_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+            => Sure_Click(sender, e);
 
         private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+            => Sure_Click(sender, e);
 
         private void SelectPhoto_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+            => _photo.SelectPhoto();
 
         private void ChangePhotoPath_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+            => _photo.ChangePhotoPath();
 
         private void ChangeUserInfo_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+            => mv.CurrentPage = new FormUserPage(mv, mv.LoggedUser, true);
     }
 }
